@@ -1,0 +1,160 @@
+/* ========================================
+   FOOTER
+======================================== */
+
+.footer {
+  background-color: var(--color-beige-light);
+  color: var(--color-text);
+  border-block-start: 1px solid var(--color-taupe);
+
+  padding-block: var(--space-xl);
+  padding-inline: var(--space-xl);
+}
+
+.footerContent {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-xl);
+
+  max-inline-size: 75rem;
+  margin-inline: auto;
+}
+
+/* Rubriker i footerns kolumner */
+.footerHeading {
+  margin-block-end: var(--space-sm);
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--color-primary);
+}
+
+/* Navigation i footerns länkkolumner */
+.footerNav {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-xs);
+}
+
+/* Länkar i footerns navigation */
+.footerNav a {
+  font-size: 0.9rem;
+  color: var(--color-text);
+  transition: color 0.3s ease;
+}
+
+.footerNav a:hover {
+  color: var(--color-primary);
+}
+
+/* Kontaktuppgifter i footern */
+.contact {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-xs);
+  font-style: normal;
+}
+
+/* Länkar i footerns kontaktuppgifter */
+.contact a {
+  font-size: 0.9rem;
+  color: var(--color-text);
+  transition: color 0.3s ease;
+}
+
+.contact a:hover {
+  color: var(--color-primary);
+}
+
+.contact p {
+  font-size: 0.9rem;
+}
+
+/* Varumärkesnamn i footern */
+.footerLogo {
+  margin-block-end: var(--space-sm);
+  color: var(--color-primary);
+  font-size: 1.25rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+/* Beskrivning av KingHouse Design */
+.footerDescription {
+    /* kompakt textkolumn */
+max-inline-size: 13rem;
+  color: var(--color-text);
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+/* Sociala medier */
+.socialLinks {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  margin-block-start: var(--space-md);
+}
+
+.socialLinks a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.socialLinks svg {
+  inline-size: 1.5rem;
+  block-size: 1.5rem;
+  fill: none;
+  stroke: var(--color-primary);
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* Copyright längst ner i footern */
+.copyright {
+  margin-block-start: var(--space-xl);
+  padding-block-start: var(--space-md);
+  border-block-start: 1px solid var(--color-taupe);
+  text-align: center;
+  font-size: 0.85rem;
+
+max-inline-size: 75rem;
+  margin-inline: auto;
+}
+
+
+
+/* ========================================
+   RESPONSIV DESIGN - TABLET
+======================================== */
+
+@media (min-width: 48rem) and (max-width: 63.99rem) {
+  /* Visa footerns innehåll i två kolumner på surfplattor */
+  .footerContent {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-xl);
+  }
+}
+
+
+
+
+/* ========================================
+   RESPONSIV DESIGN - MOBIL
+======================================== */
+
+@media (max-width: 47.99rem) {
+  /* Stapla footerns kolumner på mindre skärmar */
+  .footerContent {
+    grid-template-columns: 1fr;
+    gap: var(--space-lg);
+  }
+
+  /* Minska sidornas luft på mindre skärmar */
+  .footer {
+    padding-inline: var(--space-md);
+  }
+}
