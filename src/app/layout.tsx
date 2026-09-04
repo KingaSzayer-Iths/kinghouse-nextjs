@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist } from "next/font/google";
 import "./globals.css";
+import Header from "@/components/Header/Header";
 
 const geist = Geist({
   variable: "--font-geist",
@@ -24,7 +25,7 @@ export default function RootLayout({
         <a href="#main-content" className="skip-link">
           Hoppa till huvudinnehåll
         </a>
-
+        <Header />
         {children}
       </body>
     </html>
