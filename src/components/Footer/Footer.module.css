@@ -1,0 +1,44 @@
+/* ========================================
+   FOOTER
+======================================== */
+
+.footer {
+  background-color: var(--color-beige-light);
+  color: var(--color-text);
+  border-block-start: 1px solid var(--color-taupe);
+
+  padding-block: var(--space-xl);
+  padding-inline: var(--space-xl);
+}
+
+.footerContent {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-xl);
+}
+
+/* Rubriker i footerns kolumner */
+.footerHeading {
+  margin-block-end: var(--space-sm);
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--color-primary);
+}
+
+/* Navigation i footerns länkkolumner */
+.footerNav {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-xs);
+}
+
+/* Kontaktuppgifter i footern */
+.contact {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-xs);
+  font-style: normal;
+}
+
