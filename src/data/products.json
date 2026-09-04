@@ -1,0 +1,113 @@
+{
+  "products": [
+    {
+      "id": "1",
+      "slug": "nordic-light",
+      "name": "Nordic Light",
+      "category": "candlestick",
+      "price": 399,
+      "description": "En stilren ljusstake med mjuka former och ett minimalistiskt skandinaviskt uttryck.",
+      "material": "Metall",
+      "color": "Beige",
+      "image": "/images/products/nordic-light.jpg",
+      "alt": "Beige ljusstake Nordic Light i skandinavisk design",
+      "featured": true
+    },
+    {
+  "id": "2",
+  "slug": "balance",
+  "name": "Balance",
+  "category": "candlestick",
+  "price": 449,
+  "description": "En modern ljusstake med balanserade proportioner och ett lugnt, skandinaviskt uttryck.",
+  "material": "Metall",
+  "color": "Svart",
+  "image": "/images/products/balance.jpg",
+  "alt": "Svart ljusstake Balance med minimalistisk form",
+  "featured": false
+},
+{
+  "id": "3",
+  "slug": "arch",
+  "name": "Arch",
+  "category": "candlestick",
+  "price": 529,
+  "description": "En skulptural ljusstake inspirerad av mjuka valv och nordisk arkitektur.",
+  "material": "Metall",
+  "color": "Taupe",
+  "image": "/images/products/arch.jpg",
+  "alt": "Taupefärgad ljusstake Arch med välvd skandinavisk form",
+  "featured": true
+},
+{
+  "id": "4",
+  "slug": "stone",
+  "name": "Stone",
+  "category": "candlestick",
+  "price": 349,
+  "description": "En tidlös ljusstake med en mjuk, organisk form inspirerad av naturens stenar.",
+  "material": "Keramik",
+  "color": "Ljus beige",
+  "image": "/images/products/stone.jpg",
+  "alt": "Ljusbeige keramisk ljusstake Stone med organisk form",
+  "featured": false
+},
+{
+  "id": "5",
+  "slug": "forest",
+  "name": "Forest",
+  "category": "scented-candle",
+  "price": 299,
+  "description": "Ett stämningsfullt doftljus inspirerat av den nordiska skogen och dess lugna atmosfär.",
+  "material": "Sojavax",
+  "color": "Skogsgrön",
+  "image": "/images/products/forest.jpg",
+  "alt": "Skogsgrönt doftljus Forest i minimalistisk behållare",
+  "featured": true,
+  "scent": "Tall, cederträ och mossa"
+},
+{
+  "id": "6",
+  "slug": "calm",
+  "name": "Calm",
+  "category": "scented-candle",
+  "price": 279,
+  "description": "Ett mjukt och harmoniskt doftljus skapat för lugna stunder och en avslappnad atmosfär i hemmet.",
+  "material": "Sojavax",
+  "color": "Varm beige",
+  "image": "/images/products/calm.jpg",
+  "alt": "Varmbeige doftljus Calm i minimalistisk skandinavisk design",
+  "featured": true,
+  "scent": "Lavendel, vanilj och sandelträ"
+},
+{
+  "id": "7",
+  "slug": "nordic-woods",
+  "name": "Nordic Woods",
+  "category": "scented-candle",
+  "price": 319,
+  "description": "Ett elegant doftljus med en varm och träig karaktär inspirerad av det nordiska landskapet.",
+  "material": "Sojavax",
+  "color": "Taupe",
+  "image": "/images/products/nordic-woods.jpg",
+  "alt": "Taupefärgat doftljus Nordic Woods i skandinavisk design",
+  "featured": false,
+  "scent": "Cederträ, bergamott och amber"
+},
+{
+  "id": "8",
+  "slug": "linen",
+  "name": "Linen",
+  "category": "scented-candle",
+  "price": 269,
+  "description": "Ett fräscht och mjukt doftljus inspirerat av nytvättat linne och ljusa skandinaviska hem.",
+  "material": "Sojavax",
+  "color": "Off-white",
+  "image": "/images/products/linen.jpg",
+  "alt": "Off-white doftljus Linen i minimalistisk skandinavisk design",
+  "featured": false,
+  "scent": "Linne, bomullsblomma och vit mysk"
+}
+
+]
+}
