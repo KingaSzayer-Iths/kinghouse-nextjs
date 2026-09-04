@@ -6,14 +6,15 @@
   /* Fonts */
   --font-primary: var(--font-geist), Arial, Helvetica, sans-serif;
 
-  /* Brand Colors */
-  --color-background: #f7f5f0;
-  --color-surface: #ffffff;
-  --color-text: #242424;
-  --color-text-muted: #66625d;
-  --color-primary: #34483b;
-  --color-primary-dark: #26362c;
-  --color-accent: #b7a58c;
+/* Brand Colors */
+--color-background: #f7f5f2;
+--color-surface: #ffffff;
+--color-beige-light: #e9e3da;
+--color-beige: #d6cec2;
+--color-taupe: #b7a99a;
+--color-text: #1a1a1a;
+--color-primary: #3c5a4a;
+--color-primary-dark: #2f473a;
 
   /* Utility Colors */
   --color-border: #dedbd5;

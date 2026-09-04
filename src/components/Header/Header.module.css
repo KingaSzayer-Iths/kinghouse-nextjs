@@ -1,0 +1,151 @@
+/* HEADER */
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-block: var(--space-md);
+    padding-inline: var(--space-xl);
+    background-color: var(--color-beige-light);
+    border-bottom: 1px solid var(--color-border);
+    /* border-bottom: 1px solid var(--color-taupe); */
+}
+
+/* Logo */
+.logo {
+    font-size: 1.25rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    color: var(--color-primary);
+}
+
+/* Desktop-navigation */
+.nav {
+    display: flex;
+    align-items: center;
+    gap: var(--space-lg);
+}
+
+/* Navigationslänkar */
+.nav a {
+    position: relative;
+    color: var(--color-text);
+    font-size: 0.95rem;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+/* Animerad linje vid hover */
+.nav a::after {
+    content: "";
+    position: absolute;
+    inset-inline-start: 0;
+    inset-block-end: -0.01rem;
+    /* Position the underline below the text */
+    inline-size: 0;
+    block-size: 1px;
+    /* Tjocklek på understrykningen */
+    background-color: var(--color-primary);
+    transition: inline-size 0.3s ease;
+}
+
+.nav a:hover {
+    color: var(--color-primary);
+}
+
+.nav a:hover::after {
+    inline-size: 100%;
+}
+
+/* MOBIL HAMBURGERMENY */
+.menuButton {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.35rem;
+  inline-size: 2.75rem; /* Bredd på menyknappen */
+  block-size: 2.75rem; /* Höjd på menyknappen */
+  padding: 0;
+  background: transparent;
+  border: 0;
+}
+
+/* Hamburgermenyns linjer */
+.menuButton span {
+  display: block;
+  inline-size: 1.6rem; /* Bredd på linjer */
+  block-size: 2px; /* Höjd på linjer */
+  background-color: var(--color-primary);
+  /* background-color: red; */
+  border-radius: 999px;
+  transition:
+    transform 0.3s ease,
+    opacity 0.3s ease;
+}
+
+/* ANIMERING AV MOBILMENY */
+/* Första linjen roteras nedåt när menyn öppnas */
+.menuOpen span:nth-child(1) {
+  transform: translateY(0.45rem) rotate(45deg);
+  /* transform: translateY(0.36875rem) rotate(45deg); */
+  
+}
+
+/* Mittenlinjen tonas bort när menyn öppnas */
+.menuOpen span:nth-child(2) {
+  opacity: 0;
+}
+
+/* Tredje linjen roteras uppåt när menyn öppnas */
+.menuOpen span:nth-child(3) {
+    transform: translateY(-0.50rem) rotate(-45deg);
+  /* transform: translateY(-0.45rem) rotate(-45deg); */
+  /* transform: translateY(-0.36875rem) rotate(-45deg); */
+}
+
+
+
+
+
+
+/* RESPONSIV DESIGN - MOBIL (breakpoint 768 px) */
+@media (max-width: 47.99rem) {
+
+
+    /* Låt headern radbryta så att mobilmenyn kan ligga på en egen rad */
+  .header {
+    flex-wrap: wrap;
+  }
+
+    /* Dölj mobilnavigationen när menyn är stängd */
+  .nav {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-md);
+    inline-size: 100%;
+    max-block-size: 0;
+    overflow: hidden;
+    opacity: 0;
+    visibility: hidden;
+    transition:
+        max-block-size 0.4s ease,
+        padding-block 0.4s ease,
+        opacity 0.3s ease;
+    }
+
+
+    /* Visa mobilnavigationen när menyn är öppen */
+  .navOpen {
+    max-block-size: 20rem;
+    padding-block: var(--space-md);
+    padding-inline: 0;
+    opacity: 1;
+    visibility: visible;
+    }
+
+  /* Visa menyknappen på mindre skärmar */
+  .menuButton {
+    display: flex;
+  }
+}
+
