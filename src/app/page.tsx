@@ -1,6 +1,7 @@
 import Link from "next/link";
 import styles from "./page.module.css";
 import { getProducts } from "@/lib/products";
+import Image from "next/image";
 
 
 export default async function Home() {
@@ -29,7 +30,21 @@ export default async function Home() {
         <div className={styles.productGrid}>
           {featuredProducts.map((product) => (
             <article key={product.id} className={styles.productCard}>
-              <h3>{product.name}</h3>
+              <div className={styles.imageWrapper}>
+              <Image className={styles.productImage}
+                src={product.image}
+                alt={product.alt}
+                width={500}
+                height={500}
+              />
+              </div>
+              <div className={styles.productInfo}>
+                <h3 className={styles.productName}>{product.name}</h3>
+                <p className={styles.productPrice}>{product.price} kr</p>
+              </div>
+{/* <Link href={`/products/${product.id}`} className={styles.productLink}>
+  Se produkt
+</Link> */}
             </article>
           ))}
         </div>
