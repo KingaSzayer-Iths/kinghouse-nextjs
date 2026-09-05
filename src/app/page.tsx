@@ -31,18 +31,18 @@ export default async function Home() {
           {featuredProducts.map((product) => (
             <article key={product.id} className={styles.productCard}>
               <div className={styles.imageWrapper}>
-              <Image className={styles.productImage}
-                src={product.image}
-                alt={product.alt}
-                width={500}
-                height={500}
-              />
+                <Image className={styles.productImage}
+                  src={product.image}
+                  alt={product.alt}
+                  width={500}
+                  height={500}
+                />
               </div>
               <div className={styles.productInfo}>
                 <h3 className={styles.productName}>{product.name}</h3>
                 <p className={styles.productPrice}>{product.price} kr</p>
               </div>
-{/* <Link href={`/products/${product.id}`} className={styles.productLink}>
+              {/* <Link href={`/products/${product.id}`} className={styles.productLink}>
   Se produkt
 </Link> */}
             </article>
@@ -51,8 +51,31 @@ export default async function Home() {
       </section>
 
       {/* Kategorier */}
-      <section>
+      <section className={styles.categories}>
         <h2>Utforska våra kategorier</h2>
+
+        <div className={styles.categoryGrid}>
+          <article className={styles.categoryCard}>
+            <h3>Ljusstakar</h3>
+            <p className={styles.categoryDescription}>
+              Stilrena former och tidlös design för hemmets alla rum.
+            </p>
+            <Link href="/products" className={styles.categoryLink}>
+              Visa ljusstakar
+            </Link>
+          </article>
+
+          <article className={styles.categoryCard}>
+            <h3>Doftljus</h3>
+            <p className={styles.categoryDescription}>
+              Noggrant utvalda dofter för en varm och harmonisk atmosfär.
+            </p>
+            <Link href="/products" className={styles.categoryLink}>
+              Visa doftljus
+            </Link>
+          </article>
+        </div>
+
       </section>
     </main>
   );

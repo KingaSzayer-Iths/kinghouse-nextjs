@@ -118,7 +118,61 @@
   font-weight: 600;
 }
 
+ /* KATEGORIER */
+ .categories {
+  padding-block: var(--space-2xl);
+  padding-inline: var(--space-xl);
+  background-color: var(--color-beige);
+}
 
+/* Grid för kategorier */
+.categoryGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-lg);
+  margin-block-start: var(--space-sm);
+}
+
+/* Kategorikort */
+.categoryCard {
+  padding-block: var(--space-xl);
+  padding-inline: var(--space-lg);
+  background-color: var(--color-surface);
+  border-radius: 1rem;
+  text-align: center;
+}
+
+/* Rubrik i kategorikort */
+.categoryTitle {
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+/* Beskrivning i kategorikort */
+.categoryDescription {
+  max-inline-size: 28rem;
+  margin-block-start: var(--space-sm);
+  margin-inline: auto;
+  line-height: 1.7;
+}
+
+/* Länk i kategorikort */
+.categoryLink {
+  display: inline-block;
+  margin-block-start: var(--space-md);
+
+  color: var(--color-primary);
+  font-weight: 600;
+
+  transition:
+    color 0.3s ease,
+    transform 0.3s ease;
+}
+
+.categoryLink:hover {
+  color: var(--color-primary-dark);
+  transform: translateY(-2px);
+}
 
 
 
