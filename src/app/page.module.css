@@ -176,6 +176,38 @@
 
 
 
+/* RESPONSIV DESIGN */
+/* Tablet */
+@media (min-width: 48rem) and (max-width: 63.99rem) {
+  .productGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+
+/* Mobil */
+/* upp till 768 px */
+@media (max-width: 47.99rem) {
+  .hero {
+    min-block-size: 28rem;
+    padding-inline: var(--space-md);
+  }
+
+  .productGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .categoryGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .featured,
+  .categories {
+    padding-inline: var(--space-md);
+}
+}
+
+
 
 
 
