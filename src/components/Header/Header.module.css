@@ -6,8 +6,8 @@
     padding-block: var(--space-md);
     padding-inline: var(--space-xl);
     background-color: var(--color-beige-light);
-    border-bottom: 1px solid var(--color-border);
-    /* border-bottom: 1px solid var(--color-taupe); */
+    /* border-bottom: 1px solid var(--color-border); */
+    border-bottom: 1px solid var(--color-taupe);
 }
 
 /* Logo */
