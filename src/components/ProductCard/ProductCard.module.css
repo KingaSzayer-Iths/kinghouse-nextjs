@@ -1,0 +1,46 @@
+/* Produktkort */
+.productCard {
+  background-color: var(--color-surface);
+  border-radius: 7rem;
+  text-align: center;
+}
+
+/* Begränsar hover-effekten och rundar bildens (övre) hörn */
+.imageWrapper {
+  overflow: hidden;
+  border-radius:  7rem 7rem 0.2rem 0.2rem;    
+}
+
+/* Produktbild */
+.productImage {
+  inline-size: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+/* Förstorar produktbilden mjukt vid hover */
+.productCard:hover .productImage {
+  transform: scale(1.10);
+}
+
+
+
+/* Textinnehåll i produktkortet */
+.productInfo {
+  padding-block: var(--space-md);
+  padding-inline: var(--space-sm);
+}
+
+/* Produktnamn */
+.productName {
+  font-size: 1.15rem;
+  font-weight: 600;
+}
+
+/* Produktpris */
+.productPrice {
+  margin-block-start: var(--space-xs);
+  color: var(--color-primary);
+  font-weight: 600;
+}
