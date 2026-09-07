@@ -1,7 +1,7 @@
 import Link from "next/link";
 import styles from "./page.module.css";
 import { getProducts } from "@/lib/products";
-import Image from "next/image";
+import ProductCard from "@/components/ProductCard/ProductCard";
 
 
 export default async function Home() {
@@ -28,25 +28,12 @@ export default async function Home() {
       <section className={styles.featured}>
         <h2 className={styles.sectionTitle}>Utvalda produkter</h2>
         <div className={styles.productGrid}>
+
+{/* För varje produkt, rendera ett ProductCard och skicka in produkten. */}
           {featuredProducts.map((product) => (
-            <article key={product.id} className={styles.productCard}>
-              <div className={styles.imageWrapper}>
-                <Image className={styles.productImage}
-                  src={product.image}
-                  alt={product.alt}
-                  width={500}
-                  height={500}
-                />
-              </div>
-              <div className={styles.productInfo}>
-                <h3 className={styles.productName}>{product.name}</h3>
-                <p className={styles.productPrice}>{product.price} kr</p>
-              </div>
-              {/* <Link href={`/products/${product.id}`} className={styles.productLink}>
-  Se produkt
-</Link> */}
-            </article>
+            <ProductCard key={product.id} product={product} />
           ))}
+
         </div>
       </section>
 

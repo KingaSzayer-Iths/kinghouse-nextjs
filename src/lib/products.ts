@@ -1,6 +1,6 @@
 import type { Product } from "@/types/Product";
 
-// Hämtar alla produkter från vårt mock-API
+// Hämtar alla produkter från mock-API
 export async function getProducts(): Promise<Product[]> {
   const response = await fetch("http://localhost:3001/products");
 
