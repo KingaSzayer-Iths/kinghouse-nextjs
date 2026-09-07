@@ -3,6 +3,7 @@
 import { useState } from "react";
 import type { Product } from "@/types/Product";
 import ProductCard from "@/components/ProductCard/ProductCard";
+import styles from "./ProductList.module.css";
 
 
 interface ProductListProps {
@@ -25,25 +26,32 @@ export default function ProductList({ products }: ProductListProps) {
     return (
         <>
             {/* Filter för produktkategorier */}
-            <div>
-                <button
+            <div className={styles.filters}>
+                <button className={`${styles.filterButton} ${
+  activeFilter === "all" ? styles.activeFilter : ""
+}`}
                     type="button"
                     onClick={() => setActiveFilter("all")}>
                     Alla
                 </button>
-                <button
+                <button className={`${styles.filterButton} ${
+  activeFilter === "candlestick" ? styles.activeFilter : ""
+}`}
                     type="button"
                     onClick={() => setActiveFilter("candlestick")}>
                     Ljusstakar
                 </button>
-                <button
+                <button className={`${styles.filterButton} ${
+  activeFilter === "scented-candle" ? styles.activeFilter : ""
+}`}
                     type="button"
                     onClick={() => setActiveFilter("scented-candle")}>
                     Doftljus
                 </button>
             </div>
 
-            <div>
+            <div className={styles.productGrid}>
+                {/* Renderar ProductCard för varje produkt i filteredProducts */}
                 {filteredProducts.map((product) => (
                     <ProductCard key={product.id} product={product} />
                 ))}

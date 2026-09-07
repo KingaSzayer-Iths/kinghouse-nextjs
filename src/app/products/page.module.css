@@ -10,27 +10,10 @@
   margin-block-end: var(--space-xl);
 }
 
-/* Produktgrid */
-.productGrid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: var(--space-lg);
-}
-
-/* Tablet */
-@media (min-width: 48rem) and (max-width: 63.99rem) {
-  .productGrid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
 
 /* Mobil */
 @media (max-width: 47.99rem) {
   .productsPage {
     padding-inline: var(--space-md);
-  }
-
-  .productGrid {
-    grid-template-columns: 1fr;
   }
 }
