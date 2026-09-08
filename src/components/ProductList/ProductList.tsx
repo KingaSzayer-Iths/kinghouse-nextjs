@@ -27,23 +27,17 @@ export default function ProductList({ products }: ProductListProps) {
         <>
             {/* Filter för produktkategorier */}
             <div className={styles.filters}>
-                <button className={`${styles.filterButton} ${
-  activeFilter === "all" ? styles.activeFilter : ""
-}`}
+                <button className={`${styles.filterButton} ${activeFilter === "all" ? styles.activeFilter : ""}`}
                     type="button"
                     onClick={() => setActiveFilter("all")}>
                     Alla
                 </button>
-                <button className={`${styles.filterButton} ${
-  activeFilter === "candlestick" ? styles.activeFilter : ""
-}`}
+                <button className={`${styles.filterButton} ${activeFilter === "candlestick" ? styles.activeFilter : ""}`}
                     type="button"
                     onClick={() => setActiveFilter("candlestick")}>
                     Ljusstakar
                 </button>
-                <button className={`${styles.filterButton} ${
-  activeFilter === "scented-candle" ? styles.activeFilter : ""
-}`}
+                <button className={`${styles.filterButton} ${activeFilter === "scented-candle" ? styles.activeFilter : ""}`}
                     type="button"
                     onClick={() => setActiveFilter("scented-candle")}>
                     Doftljus

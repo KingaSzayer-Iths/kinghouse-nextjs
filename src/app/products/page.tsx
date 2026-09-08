@@ -9,7 +9,7 @@ export default async function ProductsPage() {
   <main id="main-content" className={styles.productsPage}>
     <h1 className={styles.title}>Produkter</h1>
     
-    
+  {/* Skickar produktdata till ProductList som visar produkterna */}  
     <ProductList products={products} />
     
 
