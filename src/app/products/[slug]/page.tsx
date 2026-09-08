@@ -22,7 +22,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
     // Hämtar den första matchande produkten i arrayen
     const product = products[0];
 
-    // Om ingen produkt hittas, visa 404-sidan
+    // Om ingen produkt hittas blir product undefined och notFound() visar 404-sidan
     if (!product) {
         notFound();
     }
@@ -46,11 +46,11 @@ export default async function ProductPage({ params }: ProductPageProps) {
                     <p className={styles.productPrice}>{product.price} kr</p>
                     <p className={styles.productDescription}>{product.description}</p>
                     <div className={styles.productMeta}>
-                    <p><strong>Material:</strong> {product.material}</p>
-                    <p><strong>Färg:</strong> {product.color}</p>
-                    {product.scent && (
-                        <p><strong>Doft:</strong> {product.scent}</p>
-                    )}
+                        <p><strong>Material:</strong> {product.material}</p>
+                        <p><strong>Färg:</strong> {product.color}</p>
+                        {product.scent && (
+                            <p><strong>Doft:</strong> {product.scent}</p>
+                        )}
                     </div>
                 </div>
             </div>
