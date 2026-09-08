@@ -3,6 +3,7 @@ import Image from "next/image";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import styles from "./page.module.css";
+import FavoriteButton from "@/components/FavoriteButton/FavoriteButton";
 
 
 interface ProductPageProps {
@@ -46,6 +47,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
                     <p className={styles.productPrice}>{product.price} kr</p>
                     <p className={styles.productDescription}>{product.description}</p>
                     <div className={styles.productMeta}>
+                        <FavoriteButton productId={product.id} />
                         <p><strong>Material:</strong> {product.material}</p>
                         <p><strong>Färg:</strong> {product.color}</p>
                         {product.scent && (
