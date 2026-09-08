@@ -2,6 +2,7 @@ import type { Product } from "@/types/Product";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 import Link from "next/link";
+import styles from "./page.module.css";
 
 
 interface ProductPageProps {
@@ -28,25 +29,31 @@ export default async function ProductPage({ params }: ProductPageProps) {
 
 
     return (
-        <main id="main-content">
-            <Link href="/products">
+        <main id="main-content" className={styles.productPage}>
+            <Link href="/products" className={styles.backLink}>
                 ← Tillbaka till produkter
             </Link>
-            <Image
-                src={product.image}
-                alt={product.alt}
-                width={600}
-                height={600}
-            />
-            <h1>{product.name}</h1>
-            <p>{product.price} kr</p>
-            <p>{product.description}</p>
-            <p><strong>Material:</strong> {product.material}</p>
-            <p><strong>Färg:</strong> {product.color}</p>
-            {product.scent && (
-                <p><strong>Doft:</strong> {product.scent}</p>
-            )}
-
+            <div className={styles.productDetails}>
+                {/* Produktbild och produktinformation */}
+                <Image className={styles.productImage}
+                    src={product.image}
+                    alt={product.alt}
+                    width={600}
+                    height={600}
+                />
+                <div className={styles.productInfo}>
+                    <h1 className={styles.productName}>{product.name}</h1>
+                    <p className={styles.productPrice}>{product.price} kr</p>
+                    <p className={styles.productDescription}>{product.description}</p>
+                    <div className={styles.productMeta}>
+                    <p><strong>Material:</strong> {product.material}</p>
+                    <p><strong>Färg:</strong> {product.color}</p>
+                    {product.scent && (
+                        <p><strong>Doft:</strong> {product.scent}</p>
+                    )}
+                    </div>
+                </div>
+            </div>
         </main>
     );
 }

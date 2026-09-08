@@ -1,0 +1,84 @@
+/* Produktdetaljsida */
+.productPage {
+  max-inline-size: 80rem;
+  margin-inline: auto;
+  padding-block: var(--space-xl);
+  padding-inline: var(--space-lg);
+}
+
+/* Layout för produktbild och produktinformation */
+.productDetails {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-xl);
+  align-items: start;
+}
+
+/* Produktbild */
+.productImage {
+  inline-size: 100%;
+  block-size: auto;
+  border-radius: 1rem;
+  object-fit: cover;
+}
+
+/* Produktinformation */
+.productInfo {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+/* Produktnamn */
+.productName {
+  font-size: 2rem;
+  line-height: 1.2;
+  color: var(--color-text);
+}
+
+/* Produktpris */
+.productPrice {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--color-primary);
+}
+
+/* Produktbeskrivning */
+.productDescription {
+  line-height: 1.7;
+  color: var(--color-text);
+}
+
+/* Produktdetaljer */
+.productMeta {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+
+/* Tillbaka-länk */
+.backLink {
+  display: inline-block;
+  /* Tar inte hela radens bredd */
+  margin-block-end: var(--space-lg);
+  color: var(--color-primary);
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.backLink:hover {
+  text-decoration: underline;
+}
+
+
+
+/* Mobil */
+@media (max-width: 47.99rem) {
+  .productPage {
+    padding-inline: var(--space-md);
+  }
+
+  .productDetails {
+  grid-template-columns: 1fr;
+}
+}
