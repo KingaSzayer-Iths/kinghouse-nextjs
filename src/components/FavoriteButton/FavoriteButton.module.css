@@ -1,0 +1,18 @@
+/* Favoritknapp */
+.favoriteButton {
+  padding-block: var(--space-sm);
+  padding-inline: var(--space-lg);
+  border: 1px solid var(--color-primary);
+  border-radius: 1rem;
+  background-color: transparent;
+  color: var(--color-primary);
+  font: inherit;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+/* Aktiv favorit */
+.favoriteButtonActive {
+  background-color: var(--color-primary);
+  color: var(--color-surface);
+}
