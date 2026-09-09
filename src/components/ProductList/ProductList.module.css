@@ -1,3 +1,51 @@
+/* Sökfält */
+.search {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+  max-inline-size: 32rem;
+  margin-inline: auto;
+  margin-block-end: var(--space-lg);
+}
+
+.search label {
+  font-weight: 500;
+}
+
+.search input {
+  inline-size: 100%;
+  padding-block: var(--space-sm);
+  padding-inline: var(--space-md);
+  border: 1px solid var(--color-taupe);
+  border-radius: 1rem;
+  background-color: var(--color-surface);
+  color: var(--color-text);
+  font: inherit;
+}
+
+/* Knapp för att rensa sökningen */
+.clearSearchButton {
+    /* bred som sitt innehåll, .search är en flex-container med flex-direction: column */
+  align-self: flex-start; 
+  padding: 0;
+  border: none;
+  background-color: transparent;
+  color: var(--color-primary);
+  font: inherit;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.clearSearchButton:hover {
+  text-decoration: underline;
+}
+
+/* Meddelande när sökningen inte ger några träffar */
+.noResults {
+  margin-block: var(--space-xl);
+  text-align: center;
+}
+
 /* Produktgrid */
 .productGrid {
   display: grid;
