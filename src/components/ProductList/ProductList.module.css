@@ -53,6 +53,43 @@
   gap: var(--space-lg);
 }
 
+/* Paginering */
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: var(--space-md);
+  margin-block-start: var(--space-xl);
+}
+
+/* Knappar för föregående och nästa sida */
+.pagination button {
+  padding-block: var(--space-xs);
+  padding-inline: var(--space-md);
+  border: 1px solid var(--color-primary);
+  border-radius: 1rem;
+  background-color: transparent;
+  color: var(--color-primary);
+  font: inherit;
+  cursor: pointer;
+}
+
+.pagination button:hover:not(:disabled) {
+  background-color: var(--color-primary);
+  color: var(--color-surface);
+}
+
+/* Inaktiv knapp på första eller sista sidan */
+.pagination button:disabled {
+  border-color: var(--color-taupe);
+  color: var(--color-taupe);
+  cursor: not-allowed;
+}
+
+.pagination span {
+  font-weight: 500;
+}
+
 /* Filterknappar */
 .filters {
   display: flex;
@@ -98,5 +135,17 @@
 @media (max-width: 47.99rem) {
   .productGrid {
     grid-template-columns: 1fr;
+  }
+
+  .pagination {
+    gap: var(--space-sm);
+  }
+
+  .pagination button {
+    padding-inline: var(--space-sm);
+  }
+
+  .pagination span {
+    white-space: nowrap;
   }
 }

@@ -17,6 +17,12 @@ export default function ProductList({ products }: ProductListProps) {
     // State-variabel som håller reda på användaren skriver i sökfältet
     const [searchTerm, setSearchTerm] = useState("");
 
+    // State-variabel som håller reda på vilken produktsida som visas
+    const [currentPage, setCurrentPage] = useState(1);
+
+    // Antal produkter som visas per sida
+    const productsPerPage = 8;
+
 
     // Filtrerar produkter utifrån vald kategori
     const categoryFilteredProducts =
@@ -42,6 +48,22 @@ export default function ProductList({ products }: ProductListProps) {
     // Är filtret "all"? Ja → använd alla products.
     // Nej → filtrera och behåll bara produkter vars category är samma som activeFilter.
 
+
+    // Räknar ut index för den första och sista produkten på aktuell sida
+    const indexOfLastProduct = currentPage * productsPerPage;
+    const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
+
+    // Hämtar de produkter som ska visas på aktuell sida
+    const currentProducts = filteredProducts.slice(
+        indexOfFirstProduct,
+        indexOfLastProduct
+    );
+
+    // Räknar ut hur många produktsidor som behövs
+    const totalPages = Math.ceil(
+        filteredProducts.length / productsPerPage
+    );
+
     return (
         <>
 
@@ -53,7 +75,12 @@ export default function ProductList({ products }: ProductListProps) {
                     id="product-search"
                     type="search"
                     value={searchTerm}
-                    onChange={(event) => setSearchTerm(event.target.value)}
+                    onChange={(event) => {
+                        // searchTerm uppdateras med det användaren skriver i sökfältet
+                        setSearchTerm(event.target.value);
+                        // currentPage återställs till sida 1
+                        setCurrentPage(1);
+                    }}
                     placeholder="Sök efter namn, kategori eller färg"
                 />
 
@@ -61,7 +88,11 @@ export default function ProductList({ products }: ProductListProps) {
                     <button className={styles.clearSearchButton}
                         type="button"
                         // Rensar sökfältet när knappen klickas, en tom sökning - alla produkter kommer att visas igen
-                        onClick={() => setSearchTerm("")}
+                        onClick={() => {
+                            setSearchTerm("");
+                            // currentPage återställs till sida 1
+                            setCurrentPage(1);
+                        }}
                     >
                         Rensa sökning
                     </button>
@@ -73,17 +104,26 @@ export default function ProductList({ products }: ProductListProps) {
             <div className={styles.filters}>
                 <button className={`${styles.filterButton} ${activeFilter === "all" ? styles.activeFilter : ""}`}
                     type="button"
-                    onClick={() => setActiveFilter("all")}>
+                    onClick={() => {
+                        setActiveFilter("all");
+                        setCurrentPage(1);
+                    }}>
                     Alla
                 </button>
                 <button className={`${styles.filterButton} ${activeFilter === "candlestick" ? styles.activeFilter : ""}`}
                     type="button"
-                    onClick={() => setActiveFilter("candlestick")}>
+                    onClick={() => {
+                        setActiveFilter("candlestick");
+                        setCurrentPage(1);
+                    }}>
                     Ljusstakar
                 </button>
                 <button className={`${styles.filterButton} ${activeFilter === "scented-candle" ? styles.activeFilter : ""}`}
                     type="button"
-                    onClick={() => setActiveFilter("scented-candle")}>
+                    onClick={() => {
+                        setActiveFilter("scented-candle");
+                        setCurrentPage(1);
+                    }}>
                     Doftljus
                 </button>
             </div>
@@ -95,10 +135,40 @@ export default function ProductList({ products }: ProductListProps) {
                 </p>
             ) : (
                 <div className={styles.productGrid}>
-                    {/* Renderar ProductCard för varje produkt i filteredProducts */}
-                    {filteredProducts.map((product) => (
+                    {/* Renderar ProductCard för varje produkt i currentProducts */}
+                    {currentProducts.map((product) => (
                         <ProductCard key={product.id} product={product} />
                     ))}
+                </div>
+            )}
+
+            {/* Pagination */}
+            {/* totalPages > 1 - Visar pagination knappar om det finns fler än en sida med produkter */}
+            {totalPages > 1 && (
+                <div className={styles.pagination}>
+                    <button
+                        type="button"
+                        onClick={() => setCurrentPage(currentPage - 1)}
+
+                        /* Om currentPage är 1, inaktivera knappen för att gå till föregående sida */
+                        disabled={currentPage === 1}
+                    >
+                        Föregående
+                    </button>
+
+                    <span>
+                        Sida {currentPage} av {totalPages}
+                    </span>
+
+                    <button
+                        type="button"
+                        onClick={() => setCurrentPage(currentPage + 1)}
+
+                        /* Om currentPage är lika med totalPages, inaktivera knappen för att gå till nästa sida */
+                        disabled={currentPage === totalPages}
+                    >
+                        Nästa
+                    </button>
                 </div>
             )}
         </>
