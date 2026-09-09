@@ -1,0 +1,10 @@
+/* Favoritsida */
+.favoritesPage {
+  padding-block: var(--space-xl);
+  padding-inline: var(--space-lg);
+}
+
+/* Sidrubrik */
+.title {
+  margin-block-end: var(--space-lg);
+}
