@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import type { Product } from "@/types/Product";
 import styles from "./ProductCard.module.css";
+import FavoriteIconButton from "@/components/FavoriteIconButton/FavoriteIconButton";
 
 
 interface ProductCardProps {
@@ -12,6 +13,9 @@ interface ProductCardProps {
 export default function ProductCard({ product }: ProductCardProps) {
     return (
         <article className={styles.productCard}>
+            
+            {/* Renderar FavoriteIconButton-komponenten och skickar med product.id som prop */}
+             <FavoriteIconButton productId={product.id} />
 
 {/* ${product.slug} byts ut mot den aktuella (värdet) produktens slug /template literal */}
             <Link href={`/products/${product.slug}`}>
