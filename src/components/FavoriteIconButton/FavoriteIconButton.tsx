@@ -1,10 +1,15 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import styles from "./FavoriteIconButton.module.css";
+
+
 
 interface FavoriteIconButtonProps {
   productId: string;
 }
+
+
 
 export default function FavoriteIconButton({
   productId,
@@ -28,7 +33,7 @@ export default function FavoriteIconButton({
     const favorites: string[] = storedFavorites
       ? JSON.parse(storedFavorites)
       : [];
-
+    // Om produkten inte finns i favoriter, lägg till den. Annars, ta bort den.
     if (!favorites.includes(productId)) {
       favorites.push(productId);
       localStorage.setItem("favorites", JSON.stringify(favorites));
@@ -37,7 +42,7 @@ export default function FavoriteIconButton({
       const updatedFavorites = favorites.filter(
         (id) => id !== productId
       );
-
+     // Uppdaterar localStorage med den nya listan av favoriter
       localStorage.setItem(
         "favorites",
         JSON.stringify(updatedFavorites)
@@ -48,7 +53,8 @@ export default function FavoriteIconButton({
   }
 
   return (
-    <button
+    // Renderar en knapp som visar om produkten är en favorit eller inte. När knappen klickas, anropas toggleFavorite-funktionen.
+    <button className={styles.favoriteIconButton}
       type="button"
       onClick={toggleFavorite}
       aria-label={

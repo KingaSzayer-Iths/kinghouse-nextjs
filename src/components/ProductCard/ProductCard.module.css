@@ -1,8 +1,10 @@
 /* Produktkort */
 .productCard {
+  position: relative;
   background-color: var(--color-surface);
   border-radius: 1rem;
   text-align: center;
+  
 }
 
 /* Begränsar hover-effekten och rundar bildens (övre) hörn */
@@ -23,8 +25,6 @@
 .productCard:hover .productImage {
   transform: scale(1.10);
 }
-
-
 
 /* Textinnehåll i produktkortet */
 .productInfo {
