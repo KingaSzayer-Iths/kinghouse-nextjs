@@ -1,0 +1,28 @@
+/* Favoritknapp på produktkort */
+.favoriteIconButton {
+  position: absolute;
+  inset-block-start: var(--space-sm);
+  inset-inline-end: var(--space-sm);
+  z-index: 1;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  inline-size: 2.75rem;
+  block-size: 2.75rem;
+
+  border: none;
+  border-radius: 50%;
+  background-color: var(--color-surface);
+  color: var(--color-primary);
+
+  font-size: 1.5rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+/* Visuell återkoppling när användaren håller muspekaren över knappen */
+.favoriteIconButton:hover {
+  background-color: var(--color-beige-light);
+}
