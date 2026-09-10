@@ -1,0 +1,282 @@
+/* Om oss-sida */
+.aboutPage {
+    background-color: var(--color-background);
+}
+
+/* Introduktion */
+.intro {
+    max-inline-size: 72rem;
+    margin-inline: auto;
+    padding-block: var(--space-2xl);
+    padding-inline: var(--space-md);
+    text-align: center;
+}
+
+.eyebrow {
+    margin-block-end: var(--space-sm);
+    color: var(--color-primary);
+    font-size: 0.9rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.title {
+    max-inline-size: 48rem;
+    margin-inline: auto;
+    /* color: var(--color-text); */
+    color: var(--color-primary);
+    font-size: clamp(2.4rem, 6vw, 4.5rem);
+    line-height: 1.1;
+}
+
+.introText {
+    max-inline-size: 42rem;
+    margin-block-start: var(--space-lg);
+    margin-inline: auto;
+    color: var(--color-text);
+    font-size: 1.1rem;
+    line-height: 1.8;
+}
+
+/* Sektion om idén bakom KingHouse Design */
+.storySection {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: var(--space-2xl);
+
+    max-inline-size: 72rem;
+    margin-inline: auto;
+    padding-block: var(--space-2xl);
+    padding-inline: var(--space-md);
+}
+
+/* Textinnehåll */
+.storyContent {
+    max-inline-size: 32rem;
+}
+
+.sectionEyebrow {
+    margin-block-end: var(--space-sm);
+    color: var(--color-primary);
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.sectionTitle {
+    margin-block-end: var(--space-lg);
+    color: var(--color-primary);
+    font-size: clamp(2rem, 4vw, 3rem);
+    line-height: 1.2;
+}
+
+.storyContent p:not(.sectionEyebrow) {
+    margin-block-start: var(--space-md);
+    line-height: 1.8;
+}
+
+/* Miljöbild */
+.storyImageWrapper {
+    overflow: hidden;
+    border-radius: 1rem;
+}
+
+.storyImage {
+    display: block;
+    inline-size: 100%;
+    block-size: 28rem;
+    object-fit: cover;
+}
+
+/* Sektion om det kuraterade sortimentet */
+.curatedSection {
+    margin-block: var(--space-2xl);
+    padding-block: var(--space-2xl);
+    padding-inline: var(--space-md);
+    background-color: var(--color-beige-light);
+}
+
+.curatedInner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-2xl);
+
+    max-inline-size: 72rem;
+    margin-inline: auto;
+}
+
+/* Rubrikdelen */
+.curatedHeading {
+    max-inline-size: 28rem;
+}
+
+/* Textdelen */
+.curatedContent {
+    max-inline-size: 32rem;
+}
+
+.curatedContent p {
+    line-height: 1.8;
+}
+
+.curatedContent p+p {
+    margin-block-start: var(--space-md);
+}
+
+/* Sektion om detaljerna som skapar känsla */
+.detailsSection {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-2xl);
+
+    max-inline-size: 72rem;
+    margin-inline: auto;
+    padding-block: var(--space-2xl);
+    padding-inline: var(--space-md);
+}
+
+.detailsHeading {
+    max-inline-size: 30rem;
+}
+
+.detailsContent {
+    max-inline-size: 32rem;
+}
+
+.detailsContent p {
+    line-height: 1.8;
+}
+
+.detailsContent p+p {
+    margin-block-start: var(--space-md);
+}
+
+/* Sektion om KingHouse Designs visuella uttryck */
+.designSection {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: var(--space-2xl);
+
+    max-inline-size: 72rem;
+    margin-inline: auto;
+    padding-block: var(--space-2xl);
+    padding-inline: var(--space-md);
+}
+
+/* Miljöbild för det skandinaviska uttrycket */
+.designImageWrapper {
+    overflow: hidden;
+    border-radius: 1rem;
+}
+
+.designImage {
+    display: block;
+    inline-size: 100%;
+    block-size: 28rem;
+    object-fit: cover;
+}
+
+/* Textinnehåll */
+.designContent {
+    max-inline-size: 32rem;
+}
+
+.designContent p:not(.sectionEyebrow) {
+    line-height: 1.8;
+}
+
+/* Avslutande CTA-sektion */
+.ctaSection {
+    margin-block-start: var(--space-2xl);
+    padding-block: calc(var(--space-2xl) * 1.5);
+    padding-inline: var(--space-md);
+    background-color: var(--color-primary);
+    text-align: center;
+}
+
+/* Innehållet i CTA-sektionen */
+.ctaContent {
+    max-inline-size: 42rem;
+    margin-inline: auto;
+}
+
+.ctaSection .sectionEyebrow {
+    color: var(--color-beige);
+}
+
+.ctaTitle {
+    color: var(--color-surface);
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    line-height: 1.2;
+}
+
+.ctaText {
+    max-inline-size: 34rem;
+    margin-block-start: var(--space-md);
+    margin-inline: auto;
+    color: var(--color-surface);
+    line-height: 1.8;
+}
+
+/* Länk till produktsortimentet */
+.ctaLink {
+    display: inline-block;
+    margin-block-start: var(--space-lg);
+    padding-block: var(--space-sm);
+    padding-inline: var(--space-lg);
+    border: 1px solid var(--color-surface);
+    border-radius: 1rem;
+    background-color: var(--color-surface);
+    color: var(--color-primary);
+    font-weight: 500;
+    text-decoration: none;
+    transition:
+        background-color 0.3s ease,
+        color 0.3s ease;
+}
+
+.ctaLink:hover {
+    background-color: transparent;
+    color: var(--color-surface);
+}
+
+/* MOBIL OCH MINDRE SURFPLATTOR */
+@media (max-width: 47.99rem) {
+
+    .storySection,
+    .curatedInner,
+    .detailsSection,
+    .designSection {
+        grid-template-columns: 1fr;
+    }
+
+    .curatedInner,
+    .detailsSection {
+        gap: var(--space-l);
+    }
+
+    .detailsSection {
+        padding-block-end: var(--space-lg);
+    }
+
+    .designSection {
+        padding-block-start: var(--space-lg);
+    }
+
+    /* .designSection {
+        padding-block-start: var(--space-lg);
+        gap: var(--space-2xl);
+    } */
+
+    .storyContent p:not(.sectionEyebrow),
+    .curatedContent p,
+    .detailsContent p,
+    .designContent p:not(.sectionEyebrow) {
+        font-size: 1rem;
+        line-height: 1.7;
+    }
+}
