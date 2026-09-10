@@ -1,0 +1,154 @@
+/* 404-sida */
+.notFound {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-block-size: 70vh;
+    padding-block: var(--space-2xl);
+    padding-inline: var(--space-md);
+    background-color: var(--color-background);
+    text-align: center;
+}
+
+/* Centralt innehåll */
+.content {
+    max-inline-size: 42rem;
+}
+
+/* Stor 404-text */
+.errorCode {
+    margin-block-end: var(--space-sm);
+    color: var(--color-beige);
+    font-size: clamp(5rem, 16vw, 10rem);
+    font-weight: 700;
+    line-height: 0.9;
+}
+
+/* Dekorativt ljus */
+.candle {
+    position: relative;
+    inline-size: 3rem;
+    block-size: 6rem;
+    margin-block: var(--space-lg);
+    margin-inline: auto;
+}
+
+/* Ljusets kropp */
+.candleBody {
+    position: absolute;
+    inset-block-end: 0;
+    inset-inline-start: 50%;
+    transform: translateX(-50%);
+
+    inline-size: 2.5rem;
+    block-size: 4.5rem;
+    border-radius: 0.4rem 0.4rem 0.2rem 0.2rem;
+    background-color: var(--color-beige);
+}
+
+/* Ljusets veke */
+.wick {
+    position: absolute;
+    inset-block-start: 1.15rem;
+    inset-inline-start: 50%;
+    transform: translateX(-50%);
+
+    inline-size: 0.12rem;
+    block-size: 0.7rem;
+    background-color: var(--color-text);
+}
+
+/* Ljusets låga */
+.flame {
+    position: absolute;
+    inset-block-start: 0;
+    inset-inline-start: 50%;
+    transform: translateX(-50%) rotate(45deg);
+
+    inline-size: 1.1rem;
+    block-size: 1.1rem;
+    border-radius: 70% 30% 70% 30%;
+    background-color: var(--color-taupe);
+    animation: flicker 1.8s ease-in-out infinite;
+    transform-origin: center bottom;
+}
+
+/* Ger lågan en mjuk, naturlig rörelse */
+@keyframes flicker {
+    0%,
+    100% {
+        transform: translateX(-70%) rotate(55deg) scale(1);
+    }
+    50% {
+        transform: translateX(-50%) rotate(42deg) scale(0.9, 1.08);
+    }
+}
+
+/* Rubrik */
+.content h1 {
+  margin-block-end: var(--space-md);
+  color: var(--color-text);
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  line-height: 1.2;
+}
+
+/* Förklarande text */
+.message {
+  max-inline-size: 36rem;
+  margin-inline: auto;
+  color: var(--color-text);
+  font-size: 1.05rem;
+  line-height: 1.7;
+}
+
+/* Länkar tillbaka till webbshoppen */
+.actions {
+  display: flex;
+  justify-content: center;
+  gap: var(--space-md);
+  margin-block-start: var(--space-xl);
+  flex-wrap: wrap;
+}
+
+/* Primär länk */
+.primaryLink,
+.secondaryLink {
+  padding-block: var(--space-sm);
+  padding-inline: var(--space-lg);
+  border-radius: 1rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease,
+    border-color 0.3s ease;
+}
+
+.primaryLink {
+  border: 1px solid var(--color-primary);
+  background-color: var(--color-primary);
+  color: var(--color-surface);
+}
+
+.primaryLink:hover {
+  background-color: var(--color-primary-dark);
+  border-color: var(--color-primary-dark);
+}
+
+/* Sekundär länk */
+.secondaryLink {
+  border: 1px solid var(--color-primary);
+  background-color: transparent;
+  color: var(--color-primary);
+}
+
+.secondaryLink:hover {
+  background-color: var(--color-beige-light);
+}
+
+/* Stänger av animationen för användare som föredrar minskad rörelse */
+@media (prefers-reduced-motion: reduce) {
+  .flame {
+    animation: none;
+  }
+}
