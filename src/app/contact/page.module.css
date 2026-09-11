@@ -1,0 +1,190 @@
+/* Kontaktsida */
+.contactPage {
+  background-color: var(--color-background);
+}
+
+/* Introduktion */
+.intro {
+  max-inline-size: 72rem;
+  margin-inline: auto;
+  padding-block: var(--space-2xl);
+  padding-inline: var(--space-md);
+  text-align: center;
+}
+
+.eyebrow {
+  margin-block-end: var(--space-sm);
+  color: var(--color-primary);
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.title {
+  max-inline-size: 48rem;
+  margin-inline: auto;
+  color: var(--color-primary);
+  font-size: clamp(2.4rem, 6vw, 4.5rem);
+  line-height: 1.1;
+}
+
+.introText {
+  max-inline-size: 42rem;
+  margin-block-start: var(--space-lg);
+  margin-inline: auto;
+  color: var(--color-text);
+  font-size: 1.1rem;
+  line-height: 1.8;
+}
+
+/* Kontaktinformation och formulär */
+.contactSection {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-2xl);
+
+  max-inline-size: 72rem;
+  margin-inline: auto;
+  padding-block: var(--space-2xl);
+  padding-inline: var(--space-md);
+}
+
+/* Kontaktinformation */
+.contactInfo {
+  max-inline-size: 30rem;
+}
+
+/* Formulärdel */
+.formWrapper {
+  max-inline-size: 34rem;
+  inline-size: 100%;
+}
+
+/* Mindre rubrik ovanför sektionsrubriken */
+.sectionEyebrow {
+  margin-block-end: var(--space-sm);
+  color: var(--color-primary);
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+/* Sektionsrubrik */
+.sectionTitle {
+  margin-block-end: var(--space-lg);
+  color: var(--color-primary);
+  font-size: clamp(2rem, 4vw, 3rem);
+  line-height: 1.2;
+}
+
+/* Introduktion till kontaktinformationen */
+.contactText {
+  line-height: 1.8;
+}
+
+/* Kontaktuppgifter */
+.contactDetails {
+  display: grid;
+  gap: var(--space-lg);
+  margin-block-start: var(--space-xl);
+}
+
+.contactLabel {
+  margin-block-end: var(--space-xs);
+  color: var(--color-primary);
+  font-weight: 600;
+}
+
+/* Formulärpanel */
+.formWrapper {
+  max-inline-size: 34rem;
+  inline-size: 100%;
+  padding-block: var(--space-xl);
+  padding-inline: var(--space-xl);
+  border-radius: 1rem;
+  background-color: var(--color-beige-light);
+}
+
+/* Rubrik i formulärdelen */
+.formTitle {
+  margin-block-end: var(--space-lg);
+  color: var(--color-primary);
+  font-size: clamp(1.75rem, 3vw, 2.5rem);
+  line-height: 1.2;
+}
+
+/* Kontaktformulär */
+.contactForm {
+  display: grid;
+  gap: var(--space-md);
+}
+
+/* Enskilt formulärfält */
+.formGroup {
+  display: grid;
+  gap: var(--space-xs);
+}
+
+.formGroup label {
+  color: var(--color-text);
+  font-weight: 500;
+}
+
+/* Textfält och meddelandefält */
+.formGroup input,
+.formGroup textarea {
+  inline-size: 100%;
+  padding-block: var(--space-sm);
+  padding-inline: var(--space-md);
+  border: 1px solid var(--color-taupe);
+  border-radius: 0.75rem;
+  background-color: var(--color-surface);
+  color: var(--color-text);
+  font: inherit;
+}
+
+.formGroup textarea {
+/* Ger användaren möjlighet att ändra storleken på textområdet */
+  resize: vertical;
+}
+
+/* Skicka-knapp */
+.submitButton {
+  justify-self: start;
+  margin-block-start: var(--space-sm);
+  padding-block: var(--space-sm);
+  padding-inline: var(--space-lg);
+  border: 1px solid var(--color-primary);
+  border-radius: 1rem;
+  background-color: var(--color-primary);
+  color: var(--color-surface);
+  font: inherit;
+  font-weight: 500;
+  cursor: pointer;
+  transition:
+    background-color 0.3s ease,
+    border-color 0.3s ease;
+}
+
+.submitButton:hover {
+  border-color: var(--color-primary-dark);
+  background-color: var(--color-primary-dark);
+}
+
+/* Bekräftelse efter skickat formulär */
+.successMessage {
+  margin-block-start: var(--space-lg);
+  color: var(--color-primary);
+  font-weight: 600;
+  line-height: 1.6;
+}
+
+
+/* MOBIL OCH MINDRE SURFPLATTOR */
+@media (max-width: 47.99rem) {
+  .contactSection {
+    grid-template-columns: 1fr;
+  }
+}
