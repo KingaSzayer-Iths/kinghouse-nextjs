@@ -102,9 +102,42 @@
   /* transform: translateY(-0.36875rem) rotate(-45deg); */
 }
 
+/* Länk till kundkorgen */
+.cartLink {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
 
+/* Kundkorgsikon */
+.cartIcon {
+    font-size: 1.25rem;
+    line-height: 1;
+}
 
+/* Visar antalet produkter i kundkorgen */
+.cartBadge {
+    position: absolute;
+    inset-block-start: -0.65rem;
+    inset-inline-end: -0.75rem;
 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    min-inline-size: 1.25rem;
+    block-size: 1.25rem;
+    padding-inline: 0.3rem;
+
+    border-radius: 999px;
+    background-color: var(--color-primary);
+    color: var(--color-surface);
+
+    font-size: 0.7rem;
+    font-weight: 600;
+    line-height: 1;
+}
 
 
 /* RESPONSIV DESIGN - MOBIL (breakpoint 768 px) */

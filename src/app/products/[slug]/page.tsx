@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import styles from "./page.module.css";
 import FavoriteButton from "@/components/FavoriteButton/FavoriteButton";
+import AddToCartButton from "@/components/AddToCartButton/AddToCartButton";
 
 
 interface ProductPageProps {
@@ -28,7 +29,6 @@ export default async function ProductPage({ params }: ProductPageProps) {
         notFound();
     }
 
-
     return (
         <main id="main-content" className={styles.productPage}>
             <Link href="/products" className={styles.backLink}>
@@ -45,6 +45,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
                 <div className={styles.productInfo}>
                     <h1 className={styles.productName}>{product.name}</h1>
                     <p className={styles.productPrice}>{product.price} kr</p>
+                    <AddToCartButton productId={product.id} />
                     <p className={styles.productDescription}>{product.description}</p>
                     <div className={styles.productMeta}>
                         <FavoriteButton productId={product.id} />
