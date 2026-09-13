@@ -2,6 +2,8 @@
 
 import { useState } from "react";
 import type { CartItem } from "@/types/CartItem";
+import styles from "./AddToCartButton.module.css";
+
 
 interface AddToCartButtonProps {
     productId: string;
@@ -52,8 +54,11 @@ export default function AddToCartButton({
     }
 
     return (
-        <button type="button" onClick={handleAddToCart}>
-            {isAdded ? "Tillagd i kundkorgen ✓" : "Lägg i kundkorg"}
-        </button>
+<button className={styles.addToCartButton}
+    type="button"    
+    onClick={handleAddToCart}
+>
+    {isAdded ? "Tillagd i kundkorgen ✓" : "Lägg i kundkorg"}
+</button>
     );
 }

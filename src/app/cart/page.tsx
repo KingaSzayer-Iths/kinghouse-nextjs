@@ -1,16 +1,18 @@
 "use client";
 
-
 import { useEffect, useState } from "react";
 import type { CartItem } from "@/types/CartItem";
 import type { Product } from "@/types/Product";
 import Image from "next/image";
 import Link from "next/link";
-
+import styles from "./page.module.css";
 
 export default function CartPage() {
     // Sparar kundkorgens produkter och antal i state
     const [cart, setCart] = useState<CartItem[]>([]);
+
+    // Håller reda på om kundkorgen har lästs in från localStorage
+    const [isCartLoaded, setIsCartLoaded] = useState(false);
 
     // Sparar produktinformationen som hämtas från mock-API:t
     const [products, setProducts] = useState<Product[]>([]);
@@ -39,10 +41,12 @@ export default function CartPage() {
 
         // Skapar ett objekt som innehåller både produktinformationen
         // och det antal som användaren har lagt i kundkorgen
-        return [{
-            product,
-            quantity: item.quantity,
-        }];
+        return [
+            {
+                product,
+                quantity: item.quantity,
+            },
+        ];
     });
 
     // Räknar ut hela kundkorgens totalsumma
@@ -56,18 +60,25 @@ export default function CartPage() {
     useEffect(() => {
         const storedCart = localStorage.getItem("cart");
 
-        // Om det finns en kundkorg sparad i localStorage, uppdatera state med den 
+        // Om det finns en kundkorg sparad i localStorage,
+        // uppdateras state med den
         const savedCart: CartItem[] = storedCart
             ? JSON.parse(storedCart)
             : [];
 
         setCart(savedCart);
+
+        // Markerar att kundkorgen nu har lästs in från localStorage
+        setIsCartLoaded(true);
     }, []);
 
     // Hämtar alla produkter från mock-API:t
     useEffect(() => {
         async function fetchProducts() {
-            const response = await fetch("http://localhost:3001/products");
+            const response = await fetch(
+                "http://localhost:3001/products"
+            );
+
             const data: Product[] = await response.json();
 
             setProducts(data);
@@ -78,22 +89,31 @@ export default function CartPage() {
 
     // Ökar antalet för den produkt som användaren klickar på
     function increaseQuantity(productId: string) {
-        // map() går igenom alla produkter i kundkorgen och skapar en ny array
+        // map() går igenom alla produkter i kundkorgen
+        // och skapar en ny array
         const updatedCart = cart.map((item) =>
-            // Om produktens id matchar productId skapas en kopia av objektet
-            // där quantity ökas med 1. Övriga produkter lämnas oförändrade
+            // Om produktens id matchar productId skapas en kopia
+            // av objektet där quantity ökas med 1
             item.productId === productId
-                ? { ...item, quantity: item.quantity + 1 }
+                ? {
+                    ...item,
+                    quantity: item.quantity + 1,
+                }
                 : item
         );
 
         // Uppdaterar kundkorgens state så att sidan direkt visar det nya antalet
         setCart(updatedCart);
 
-        // Sparar även ändringen i localStorage så att den finns kvar efter omladdning
-        localStorage.setItem("cart", JSON.stringify(updatedCart));
+        // Sparar även ändringen i localStorage
+        // så att den finns kvar efter omladdning
+        localStorage.setItem(
+            "cart",
+            JSON.stringify(updatedCart)
+        );
 
-        // Meddelar headern att kundkorgen har ändrats så att badgen uppdateras direkt
+        // Meddelar headern att kundkorgen har ändrats
+        // så att badgen uppdateras direkt
         window.dispatchEvent(new Event("cartUpdated"));
     }
 
@@ -104,7 +124,10 @@ export default function CartPage() {
         const updatedCart = cart
             .map((item) =>
                 item.productId === productId
-                    ? { ...item, quantity: item.quantity - 1 }
+                    ? {
+                        ...item,
+                        quantity: item.quantity - 1,
+                    }
                     : item
             )
             // filter() behåller bara produkter som har ett antal större än 0
@@ -115,13 +138,17 @@ export default function CartPage() {
         setCart(updatedCart);
 
         // Sparar ändringen så att kundkorgen finns kvar efter omladdning
-        localStorage.setItem("cart", JSON.stringify(updatedCart));
+        localStorage.setItem(
+            "cart",
+            JSON.stringify(updatedCart)
+        );
 
         // Meddelar headern så att kundkorgens badge uppdateras direkt
         window.dispatchEvent(new Event("cartUpdated"));
     }
 
-    // Tar bort hela produkten från kundkorgen oavsett hur många exemplar som finns
+    // Tar bort hela produkten från kundkorgen
+    // oavsett hur många exemplar som finns
     function removeFromCart(productId: string) {
         // filter() skapar en ny array och behåller alla produkter
         // utom den vars productId matchar produkten som ska tas bort
@@ -129,109 +156,150 @@ export default function CartPage() {
             (item) => item.productId !== productId
         );
 
-        // Uppdaterar kundkorgens state så att produkten försvinner direkt från sidan
+        // Uppdaterar kundkorgens state
+        // så att produkten försvinner direkt från sidan
         setCart(updatedCart);
 
         // Sparar den uppdaterade kundkorgen i localStorage
-        localStorage.setItem("cart", JSON.stringify(updatedCart));
+        localStorage.setItem(
+            "cart",
+            JSON.stringify(updatedCart)
+        );
 
         // Meddelar headern så att kundkorgens badge uppdateras direkt
         window.dispatchEvent(new Event("cartUpdated"));
     }
 
+    // Väntar med att visa kundkorgens innehåll tills localStorage har lästs in, tomma kundkorgen blinkar inte till vid omladdning
+    if (!isCartLoaded) {
+        return null;
+    }
+
     return (
-        <main id="main-content">
-            <h1>Kundkorg</h1>
-            {/* Visar olika innehåll beroende på om kundkorgen är tom eller innehåller produkter */}
+        <main
+            id="main-content"
+            className={styles.cartPage}
+        >
+            <h1 className={styles.cartTitle}>
+                Kundkorg
+            </h1>
+
+            {/* Visar olika innehåll beroende på om kundkorgen
+                är tom eller innehåller produkter */}
             {cart.length === 0 ? (
-                <section aria-labelledby="empty-cart-heading">
+                <section
+                    className={styles.emptyCart}
+                    aria-labelledby="empty-cart-heading"
+                >
                     {/* Visas när kundkorgen inte innehåller några produkter */}
-                    <h2 id="empty-cart-heading">
+                    <h2
+                        id="empty-cart-heading"
+                        className={styles.emptyCartTitle}
+                    >
                         Din kundkorg är tom
                     </h2>
 
-                    <p>
-                        Här finns inga produkter ännu. Utforska vårt sortiment
-                        och hitta något som passar ditt hem.
+                    <p className={styles.emptyCartText}>
+                        Här finns inga produkter ännu.
+                        Utforska vårt sortiment och hitta
+                        något som passar ditt hem.
                     </p>
 
                     {/* Leder användaren tillbaka till produktsidan */}
-                    <Link href="/products">
+                    <Link
+                        href="/products"
+                        className={styles.productsLink}
+                    >
                         Utforska våra produkter
                     </Link>
                 </section>
             ) : (
-                <div>
+                <div className={styles.cartContent}>
                     {/* Visar det totala antalet produkter i kundkorgen */}
-                    <p>
+                    <p className={styles.cartQuantity}>
                         Totalt antal produkter: {totalQuantity}
                     </p>
 
-                    {/* map() går igenom alla produkter i kundkorgen och skapar
-                    innehållet som visas för varje enskild produkt */}
+                    {/* map() går igenom alla produkter i kundkorgen
+                        och skapar innehållet som visas för varje produkt */}
                     {cartProducts.map((item) => (
-                        <div key={item.product.id}>
+                        <div
+                            key={item.product.id}
+                            className={styles.cartItem}
+                        >
                             <Image
+                                className={styles.cartItemImage}
                                 src={item.product.image}
                                 alt={item.product.alt}
                                 width={120}
                                 height={120}
                             />
 
-                            <h2>{item.product.name}</h2>
+                            {/* Samlar produktinformation och kontroller
+                                i produktkortets andra grid-kolumn */}
+                            <div className={styles.cartItemInfo}>
+                                <h2 className={styles.cartItemName}>
+                                    {item.product.name}
+                                </h2>
 
-                            <p>
-                                Pris: {item.product.price} kr
-                            </p>
+                                <p className={styles.cartItemPrice}>
+                                    Pris: {item.product.price} kr
+                                </p>
 
-                            <div>
-                                {/* Minskar antalet för just den här produkten med ett steg */}
-                                <button
+                                <div className={styles.quantityControls}>
+                                    {/* Minskar antalet för produkten med ett steg */}
+                                    <button className={styles.quantityButton}
+                                        type="button"
+                                        onClick={() =>
+                                            decreaseQuantity(
+                                                item.product.id
+                                            )
+                                        }
+                                        aria-label={`Minska antal för ${item.product.name}`}
+                                    >
+                                        -
+                                    </button>
+
+                                    {/* Visar hur många exemplar av produkten
+                                        som finns i kundkorgen */}
+                                    <span className={styles.quantityValue}>
+                                        {item.quantity}
+                                    </span>
+
+                                    {/* Ökar antalet för produkten med ett steg */}
+                                    <button className={styles.quantityButton}
+                                        type="button"
+                                        onClick={() =>
+                                            increaseQuantity(
+                                                item.product.id
+                                            )
+                                        }
+                                        aria-label={`Öka antal för ${item.product.name}`}
+                                    >
+                                        +
+                                    </button>
+                                </div>
+
+                                <button className={styles.removeButton}
                                     type="button"
                                     onClick={() =>
-                                        decreaseQuantity(item.product.id)
+                                        removeFromCart(item.product.id)
                                     }
-                                    aria-label={`Minska antal för ${item.product.name}`}
+                                    aria-label={`Ta bort ${item.product.name} från kundkorgen`}
                                 >
-                                    −
+                                    Ta bort
                                 </button>
 
-                                {/* Visar hur många exemplar av produkten som finns i kundkorgen */}
-                                <span>{item.quantity}</span>
-
-                                {/* Ökar antalet för just den här produkten med ett steg */}
-                                <button
-                                    type="button"
-                                    onClick={() =>
-                                        increaseQuantity(item.product.id)
-                                    }
-                                    aria-label={`Öka antal för ${item.product.name}`}
-                                >
-                                    +
-                                </button>
+                                {/* Visar produktens pris multiplicerat med antalet */}
+                                <p className={styles.subtotal}>
+                                    Delsumma: {item.product.price * item.quantity} kr
+                                </p>
                             </div>
-
-                            {/* Tar bort hela produkten från kundkorgen oavsett antal */}
-                            <button
-                                type="button"
-                                onClick={() =>
-                                    removeFromCart(item.product.id)
-                                }
-                                aria-label={`Ta bort ${item.product.name} från kundkorgen`}
-                            >
-                                Ta bort
-                            </button>
-
-                            {/* Visar priset för produkten multiplicerat med antalet */}
-                            <p>
-                                Delsumma:{" "}
-                                {item.product.price * item.quantity} kr
-                            </p>
                         </div>
                     ))}
 
                     {/* Visar totalsumman för alla produkter i kundkorgen */}
-                    <p>
+                    <p className={styles.cartTotal}>
                         Totalsumma: {totalPrice} kr
                     </p>
                 </div>

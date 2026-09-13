@@ -1,0 +1,241 @@
+/* Huvudcontainer för kundkorgssidan */
+.cartPage {
+    inline-size: 100%;
+    max-inline-size: 75rem;
+    min-block-size: 70vh;
+    margin-inline: auto;
+    padding-block: var(--space-xl);
+    padding-inline: var(--space-xl);
+}
+
+/* Sidans huvudrubrik */
+.cartTitle {
+    margin-block-end: var(--space-xl);
+    color: var(--color-text);
+    font-size: 2rem;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+}
+
+/* Meddelande som visas när kundkorgen är tom */
+.emptyCart {
+    max-inline-size: 36rem;
+    padding-block: var(--space-xl);
+    padding-inline: var(--space-xl);
+    background-color: var(--color-beige-light);
+    border: 1px solid var(--color-beige);
+    border-radius: 1rem;
+}
+
+/* Rubrik i den tomma kundkorgen */
+.emptyCartTitle {
+    margin-block-end: var(--space-md);
+    color: var(--color-primary);
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+/* Beskrivande text i den tomma kundkorgen */
+.emptyCartText {
+    margin-block-end: var(--space-lg);
+    color: var(--color-text);
+    line-height: 1.6;
+}
+
+/* Länk tillbaka till produktsidan när kundkorgen är tom */
+.productsLink {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    padding-block: 0.75rem;
+    padding-inline: 1.5rem;
+
+    background-color: var(--color-primary);
+    color: var(--color-surface);
+    border: 1px solid var(--color-primary);
+    border-radius: 1rem;
+
+    font-weight: 600;
+    text-decoration: none;
+
+    transition:
+        background-color 0.3s ease,
+        border-color 0.3s ease;
+}
+
+/* Visuell återkoppling när användaren håller muspekaren över länken */
+.productsLink:hover {
+    background-color: var(--color-primary-dark);
+    border-color: var(--color-primary-dark);
+    /* border-radius: 1rem; */
+}
+
+/* Innehåller kundkorgens produkter och sammanfattning */
+.cartContent {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-lg);
+}
+
+/* En enskild produkt i kundkorgen */
+.cartItem {
+    display: grid;
+    grid-template-columns: 9.8rem 1fr;
+    gap: var(--space-lg);
+
+    padding-block: var(--space-md);
+    padding-inline: var(--space-lg);
+
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-beige);
+}
+
+/* Produktbild i kundkorgen */
+.cartItemImage {
+    inline-size: 9.8rem;
+    block-size: 9.8rem;
+    object-fit: cover;
+}
+
+/* Produktinformation och kontroller i kundkorgens produktkort */
+.cartItemInfo {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+}
+
+/* Produktnamn i kundkorgen */
+.cartItemName {
+    color: var(--color-text);
+    font-size: 1.25rem;
+    font-weight: 600;
+    line-height: 1.3;
+}
+
+/* Produktens styckpris */
+.cartItemPrice {
+    color: var(--color-text);
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+/* Kontroller för att öka och minska produktens antal */
+.quantityControls {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-sm);
+}
+
+/* Knappar för att öka och minska produktens antal */
+.quantityButton {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    inline-size: 2rem;
+    block-size: 2rem;
+
+    background-color: var(--color-background);
+    color: var(--color-text);
+    border: 1px solid var(--color-beige);
+
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+
+    transition:
+        background-color 0.3s ease,
+        border-color 0.3s ease;
+}
+
+/* Visuell återkoppling när användaren håller muspekaren över knappen */
+.quantityButton:hover {
+    background-color: var(--color-beige-light);
+    border-color: var(--color-taupe);
+}
+
+/* Visar antalet exemplar av produkten i kundkorgen */
+.quantityValue {
+    min-inline-size: 1.5rem;
+    color: var(--color-text);
+    font-size: 1rem;
+    font-weight: 600;
+    text-align: center;
+}
+
+/* Knapp för att ta bort en produkt från kundkorgen */
+.removeButton {
+    padding-block: 0.4rem;
+    padding-inline: 0;
+
+    background-color: transparent;
+    color: var(--color-primary);
+    border: none;
+
+    font: inherit;
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-decoration: underline;
+    text-underline-offset: 0.2rem;
+
+    cursor: pointer;
+
+    transition: color 0.3s ease;
+}
+
+/* Visuell återkoppling när användaren håller muspekaren över knappen */
+.removeButton:hover {
+    color: var(--color-primary-dark);
+}
+
+/* Delsumma för en enskild produkt */
+.subtotal {
+    margin-block-start: auto;
+    color: var(--color-text);
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+/* Visar det totala antalet produkter i kundkorgen */
+.cartQuantity {
+    color: var(--color-text);
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+/* Visar kundkorgens totala summa */
+.cartTotal {
+    padding-block-start: var(--space-lg);
+
+    border-block-start: 1px solid var(--color-beige);
+
+    color: var(--color-primary);
+    font-size: 1.25rem;
+    font-weight: 600;
+}
+
+/* Mobil */
+@media (max-width: 47.99rem) {
+    .cartPage {
+        padding-block: var(--space-lg);
+        padding-inline: var(--space-md);
+    }
+
+    /* Visar produktbild och produktinformation under varandra på mobil */
+    .cartItem {
+        grid-template-columns: 1fr;
+        padding-block: var(--space-md);
+        padding-inline: var(--space-md);
+    }
+
+    /* Anpassar produktbilden till mobilens bredd */
+    .cartItemImage {
+        inline-size: 100%;
+        max-inline-size: 16rem;
+        block-size: auto;
+        aspect-ratio: 1 / 1;
+        justify-self: center;
+    }
+}
