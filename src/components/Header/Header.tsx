@@ -4,6 +4,8 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import type { CartItem } from "@/types/CartItem";
 import styles from "./Header.module.css";
+import Image from "next/image";
+
 
 
 export default function Header() {
@@ -45,10 +47,24 @@ export default function Header() {
 
     return (
         <header className={styles.header}>
+            <Link className={styles.logo}
+    href="/"
+    onClick={closeMenu}
+>
+    <Image className={styles.logoIcon}
+        src="/images/products/loggo1.webp"
+        alt=""
+        width={40}
+        height={40}
+        aria-hidden="true"
+    />
+    <span>KingHouse Design</span>
+</Link>
+
             {/* Logotyp som leder tillbaka till startsidan. stänger också mobilmenyn */}
-            <Link href="/" className={styles.logo} onClick={closeMenu}>
+            {/* <Link href="/" className={styles.logo} onClick={closeMenu}>
                 KingHouse Design
-            </Link>
+            </Link> */}
 
             {/* Knapp för att öppna och stänga mobilmenyn */}
             <button
