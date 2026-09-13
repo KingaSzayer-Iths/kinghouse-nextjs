@@ -29,9 +29,15 @@ export default async function Home() {
         <h2 className={styles.sectionTitle}>Utvalda produkter</h2>
         <div className={styles.productGrid}>
 
-{/* För varje produkt, rendera ett ProductCard och skicka in produkten. */}
-          {featuredProducts.map((product) => (
-            <ProductCard key={product.id} product={product} />
+          {/* För varje utvald produkt renderas ett ProductCard.
+    Den första bilden prioriteras eftersom den ligger tidigt på sidan
+    och kan påverka sidans LCP-värde. */}
+          {featuredProducts.map((product, index) => (
+            <ProductCard
+              key={product.id}
+              product={product}
+              priority={index === 0}
+            />
           ))}
 
         </div>

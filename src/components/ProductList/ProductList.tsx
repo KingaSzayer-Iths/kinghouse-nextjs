@@ -136,8 +136,15 @@ export default function ProductList({ products }: ProductListProps) {
             ) : (
                 <div className={styles.productGrid}>
                     {/* Renderar ProductCard för varje produkt i currentProducts */}
-                    {currentProducts.map((product) => (
-                        <ProductCard key={product.id} product={product} />
+                    {currentProducts.map((product, index) => (
+                        <ProductCard
+                            key={product.id}
+                            product={product}
+
+                            // Prioriterar bara den första produktbilden på aktuell sida.
+                            // Den bilden visas direkt och kan därför påverka sidans LCP.
+                            priority={index === 0}
+                        />
                     ))}
                 </div>
             )}

@@ -7,17 +7,20 @@ import FavoriteIconButton from "@/components/FavoriteIconButton/FavoriteIconButt
 
 interface ProductCardProps {
     product: Product;
+    // Anger om produktbilden ska prioriteras vid inladdning.
+    // Används för bilder som visas direkt på sidan och kan påverka LCP (Largest Contentful Paint).
+    priority?: boolean;
 }
 
 // ProductCard tar emot props som ska följa ProductCardProps och ur dessa props plockar man direkt ut product.
-export default function ProductCard({ product }: ProductCardProps) {
+export default function ProductCard({ product, priority = false }: ProductCardProps) {
     return (
         <article className={styles.productCard}>
-            
-            {/* Renderar FavoriteIconButton-komponenten och skickar med product.id som prop */}
-             <FavoriteIconButton productId={product.id} />
 
-{/* ${product.slug} byts ut mot den aktuella (värdet) produktens slug /template literal */}
+            {/* Renderar FavoriteIconButton-komponenten och skickar med product.id som prop */}
+            <FavoriteIconButton productId={product.id} />
+
+            {/* ${product.slug} byts ut mot den aktuella (värdet) produktens slug /template literal */}
             <Link href={`/products/${product.slug}`}>
                 <div className={styles.imageWrapper}>
                     <Image
@@ -26,6 +29,12 @@ export default function ProductCard({ product }: ProductCardProps) {
                         alt={product.alt}
                         width={500}
                         height={500}
+                        // Hjälper Next.js att välja en lagom stor bild beroende på skärmstorlek
+                        // och hur många kolumner produktgridden visar.
+                        sizes="(max-width: 47.99rem) 100vw, (max-width: 63.99rem) 50vw, 25vw"
+                        // Prioriterar bara bilden när ProductCard får priority=true.
+                        // Övriga produktbilder kan fortsätta laddas först när de behövs.
+                        priority={priority}
                     />
                 </div>
 
