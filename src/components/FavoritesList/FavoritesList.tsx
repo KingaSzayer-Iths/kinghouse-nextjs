@@ -14,6 +14,9 @@ export default function FavoritesList() {
     // State-variabel som innehåller de fullständiga favoritprodukterna, hela produktobjekten för produkt 1 och 5
     const [favoriteProducts, setFavoriteProducts] = useState<Product[]>([]);
 
+    // Håller reda på om favoriterna fortfarande laddas in
+    // const [isLoading, setIsLoading] = useState(true);
+
     // Läser sparade favoriter från localStorage och hämtar sedan
     // motsvarande produkter från mock-API:t när sidan laddas.
     useEffect(() => {

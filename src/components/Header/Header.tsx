@@ -48,18 +48,18 @@ export default function Header() {
     return (
         <header className={styles.header}>
             <Link className={styles.logo}
-    href="/"
-    onClick={closeMenu}
->
-    <Image className={styles.logoIcon}
-        src="/images/products/loggo1.webp"
-        alt=""
-        width={40}
-        height={40}
-        aria-hidden="true"
-    />
-    <span>KingHouse Design</span>
-</Link>
+                href="/"
+                onClick={closeMenu}
+            >
+                <Image className={styles.logoIcon}
+                    src="/images/products/loggo1.webp"
+                    alt=""
+                    width={40}
+                    height={40}
+                    aria-hidden="true"
+                />
+                <span>KingHouse Design</span>
+            </Link>
 
             {/* Logotyp som leder tillbaka till startsidan. stänger också mobilmenyn */}
             {/* <Link href="/" className={styles.logo} onClick={closeMenu}>

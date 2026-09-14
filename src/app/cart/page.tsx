@@ -17,6 +17,9 @@ export default function CartPage() {
     // Sparar produktinformationen som hämtas från mock-API:t
     const [products, setProducts] = useState<Product[]>([]);
 
+    // Håller reda på om produktinformationen har hämtats från mock-API:t
+    const [isProductsLoaded, setIsProductsLoaded] = useState(false);
+
     // Räknar ihop quantity för alla produkter i kundkorgen
     // reduce() går igenom hela cart-arrayen och bygger upp en totalsumma
     // 0 är startvärdet för total
@@ -82,6 +85,9 @@ export default function CartPage() {
             const data: Product[] = await response.json();
 
             setProducts(data);
+
+            // Markerar att produktinformationen nu har hämtats
+            setIsProductsLoaded(true);
         }
 
         fetchProducts();
@@ -170,9 +176,24 @@ export default function CartPage() {
         window.dispatchEvent(new Event("cartUpdated"));
     }
 
-    // Väntar med att visa kundkorgens innehåll tills localStorage har lästs in, tomma kundkorgen blinkar inte till vid omladdning
-    if (!isCartLoaded) {
-        return null;
+    // Väntar tills både kundkorgen från localStorage och
+    // produktinformationen från mock-API:t har lästs in.
+    // Under tiden behålls sidans main-element så att footern
+    // inte flyttar sig upp och sedan skjuts ned igen.
+    if (!isCartLoaded || !isProductsLoaded) {
+        return (
+            <main
+                id="main-content"
+                className={styles.cartPage}
+                aria-busy="true"
+            >
+                <h1 className={styles.cartTitle}>
+                    Kundkorg
+                </h1>
+
+                <p>Laddar kundkorgen...</p>
+            </main>
+        );
     }
 
     return (
@@ -185,7 +206,7 @@ export default function CartPage() {
             </h1>
 
             {/* Visar olika innehåll beroende på om kundkorgen
-                är tom eller innehåller produkter */}
+            är tom eller innehåller produkter */}
             {cart.length === 0 ? (
                 <section
                     className={styles.emptyCart}
@@ -221,7 +242,7 @@ export default function CartPage() {
                     </p>
 
                     {/* map() går igenom alla produkter i kundkorgen
-                        och skapar innehållet som visas för varje produkt */}
+                    och skapar innehållet som visas för varje produkt */}
                     {cartProducts.map((item, index) => (
                         <div
                             key={item.product.id}
@@ -243,7 +264,7 @@ export default function CartPage() {
                             />
 
                             {/* Samlar produktinformation och kontroller
-                                i produktkortets andra grid-kolumn */}
+                            i produktkortets andra grid-kolumn */}
                             <div className={styles.cartItemInfo}>
                                 <h2 className={styles.cartItemName}>
                                     {item.product.name}
@@ -255,12 +276,11 @@ export default function CartPage() {
 
                                 <div className={styles.quantityControls}>
                                     {/* Minskar antalet för produkten med ett steg */}
-                                    <button className={styles.quantityButton}
+                                    <button
+                                        className={styles.quantityButton}
                                         type="button"
                                         onClick={() =>
-                                            decreaseQuantity(
-                                                item.product.id
-                                            )
+                                            decreaseQuantity(item.product.id)
                                         }
                                         aria-label={`Minska antal för ${item.product.name}`}
                                     >
@@ -268,18 +288,17 @@ export default function CartPage() {
                                     </button>
 
                                     {/* Visar hur många exemplar av produkten
-                                        som finns i kundkorgen */}
+                                    som finns i kundkorgen */}
                                     <span className={styles.quantityValue}>
                                         {item.quantity}
                                     </span>
 
                                     {/* Ökar antalet för produkten med ett steg */}
-                                    <button className={styles.quantityButton}
+                                    <button
+                                        className={styles.quantityButton}
                                         type="button"
                                         onClick={() =>
-                                            increaseQuantity(
-                                                item.product.id
-                                            )
+                                            increaseQuantity(item.product.id)
                                         }
                                         aria-label={`Öka antal för ${item.product.name}`}
                                     >
@@ -287,7 +306,8 @@ export default function CartPage() {
                                     </button>
                                 </div>
 
-                                <button className={styles.removeButton}
+                                <button
+                                    className={styles.removeButton}
                                     type="button"
                                     onClick={() =>
                                         removeFromCart(item.product.id)
@@ -299,7 +319,8 @@ export default function CartPage() {
 
                                 {/* Visar produktens pris multiplicerat med antalet */}
                                 <p className={styles.subtotal}>
-                                    Delsumma: {item.product.price * item.quantity} kr
+                                    Delsumma:{" "}
+                                    {item.product.price * item.quantity} kr
                                 </p>
                             </div>
                         </div>

@@ -29,7 +29,7 @@
 
 /* Textinnehåll i produktkortet */
 .productInfo {
-  padding-block: var(--space-md);
+  padding-block: var(--space-sm);
   padding-inline: var(--space-sm);
 }
 

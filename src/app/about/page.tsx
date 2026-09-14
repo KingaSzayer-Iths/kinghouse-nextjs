@@ -123,6 +123,9 @@ export default function AboutPage() {
             // På mindre skärmar visas bilden över hela bredden,
             // medan den på större skärmar upptar ungefär halva layouten.
             sizes="(max-width: 63.99rem) 100vw, 50vw"
+            // Bilden kan bli sidans LCP beroende på skärmstorlek,
+            // därför laddas den direkt i stället för med lazy loading.
+            loading="eager"
           />
         </div>
 
