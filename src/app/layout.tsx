@@ -21,7 +21,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="sv">
+    // Gör att Next.js kan hantera scrollningen korrekt vid navigering
+    // även när smooth scrolling används i globals.css
+    <html lang="sv" data-scroll-behavior="smooth">
       <body className={geist.variable}>
         <a href="#main-content" className="skip-link">
           Hoppa till huvudinnehåll
