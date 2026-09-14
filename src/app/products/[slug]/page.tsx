@@ -41,6 +41,9 @@ export default async function ProductPage({ params }: ProductPageProps) {
                     alt={product.alt}
                     width={600}
                     height={600}
+                    // Hjälper Next.js att välja rätt bildstorlek utifrån layouten.
+                    // På mobil använder bilden hela kolumnen och på större skärmar ungefär halva bredden.
+                    sizes="(max-width: 47.99rem) 100vw, 50vw"
                 />
                 <div className={styles.productInfo}>
                     <h1 className={styles.productName}>{product.name}</h1>
