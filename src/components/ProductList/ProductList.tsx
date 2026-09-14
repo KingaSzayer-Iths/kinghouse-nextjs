@@ -141,9 +141,9 @@ export default function ProductList({ products }: ProductListProps) {
                             key={product.id}
                             product={product}
 
-                            // Prioriterar bara den första produktbilden på aktuell sida.
-                            // Den bilden visas direkt och kan därför påverka sidans LCP.
-                            priority={index === 0}
+                            // Prioriterar bara de första 4 produktbilderna på aktuell sida.
+                            // De 4 bilderna visas direkt och kan därför påverka sidans LCP.
+                            priority={index < 4}
                         />
                     ))}
                 </div>

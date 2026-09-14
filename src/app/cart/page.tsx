@@ -222,7 +222,7 @@ export default function CartPage() {
 
                     {/* map() går igenom alla produkter i kundkorgen
                         och skapar innehållet som visas för varje produkt */}
-                    {cartProducts.map((item) => (
+                    {cartProducts.map((item, index) => (
                         <div
                             key={item.product.id}
                             className={styles.cartItem}
@@ -233,6 +233,13 @@ export default function CartPage() {
                                 alt={item.product.alt}
                                 width={120}
                                 height={120}
+                                // Hjälper Next.js att välja en lämplig bildstorlek för kundkorgen.
+                                // På mobil kan bilden bli upp till 16rem bred,
+                                // medan den på större skärmar visas i cirka 9.8rem.
+                                sizes="(max-width: 47.99rem) 16rem, 9.8rem"
+                                // Den första produktbilden ligger högst i kundkorgen och kan bli sidans LCP.
+                                // Därför laddas den direkt, medan övriga bilder använder vanlig lazy loading.
+                                loading={index === 0 ? "eager" : undefined}
                             />
 
                             {/* Samlar produktinformation och kontroller
