@@ -6,6 +6,7 @@ import type { Product } from "@/types/Product";
 import Image from "next/image";
 import Link from "next/link";
 import styles from "./page.module.css";
+import productsData from "@/data/products.json";
 
 export default function CartPage() {
     // Sparar kundkorgens produkter och antal i state
@@ -75,22 +76,14 @@ export default function CartPage() {
         setIsCartLoaded(true);
     }, []);
 
-    // Hämtar alla produkter från mock-API:t
+    // Läser produktinformationen från den lokala JSON-filen
     useEffect(() => {
-        async function fetchProducts() {
-            const response = await fetch(
-                "http://localhost:3001/products"
-            );
+        const data = productsData.products as Product[];
 
-            const data: Product[] = await response.json();
+        setProducts(data);
 
-            setProducts(data);
-
-            // Markerar att produktinformationen nu har hämtats
-            setIsProductsLoaded(true);
-        }
-
-        fetchProducts();
+        // Markerar att produktinformationen nu har lästs in
+        setIsProductsLoaded(true);
     }, []);
 
     // Ökar antalet för den produkt som användaren klickar på

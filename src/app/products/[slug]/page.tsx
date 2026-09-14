@@ -5,7 +5,7 @@ import Link from "next/link";
 import styles from "./page.module.css";
 import FavoriteButton from "@/components/FavoriteButton/FavoriteButton";
 import AddToCartButton from "@/components/AddToCartButton/AddToCartButton";
-
+import productsData from "@/data/products.json";
 
 interface ProductPageProps {
     params: Promise<{
@@ -15,28 +15,37 @@ interface ProductPageProps {
 
 export default async function ProductPage({ params }: ProductPageProps) {
     const { slug } = await params;
+
+    // Läser produktinformationen från den lokala JSON-filen
+    const products = productsData.products as Product[];
+
     // Hämtar produkten som matchar slug från URL:en
-    const response = await fetch(
-        `http://localhost:3001/products?slug=${slug}`
+    const product = products.find(
+        (product) => product.slug === slug
     );
 
-    const products: Product[] = await response.json();
-    // Hämtar den första matchande produkten i arrayen
-    const product = products[0];
-
-    // Om ingen produkt hittas blir product undefined och notFound() visar 404-sidan
+    // Om ingen produkt hittas blir product undefined
+    // och notFound() visar 404-sidan
     if (!product) {
         notFound();
     }
 
     return (
-        <main id="main-content" className={styles.productPage}>
-            <Link href="/products" className={styles.backLink}>
+        <main
+            id="main-content"
+            className={styles.productPage}
+        >
+            <Link
+                href="/products"
+                className={styles.backLink}
+            >
                 ← Tillbaka till produkter
             </Link>
+
             <div className={styles.productDetails}>
                 {/* Produktbild och produktinformation */}
-                <Image className={styles.productImage}
+                <Image
+                    className={styles.productImage}
                     src={product.image}
                     alt={product.alt}
                     width={600}
@@ -45,17 +54,40 @@ export default async function ProductPage({ params }: ProductPageProps) {
                     // På mobil använder bilden hela kolumnen och på större skärmar ungefär halva bredden.
                     sizes="(max-width: 47.99rem) 100vw, 50vw"
                 />
+
                 <div className={styles.productInfo}>
-                    <h1 className={styles.productName}>{product.name}</h1>
-                    <p className={styles.productPrice}>{product.price} kr</p>
+                    <h1 className={styles.productName}>
+                        {product.name}
+                    </h1>
+
+                    <p className={styles.productPrice}>
+                        {product.price} kr
+                    </p>
+
                     <AddToCartButton productId={product.id} />
-                    <p className={styles.productDescription}>{product.description}</p>
+
+                    <p className={styles.productDescription}>
+                        {product.description}
+                    </p>
+
                     <div className={styles.productMeta}>
                         <FavoriteButton productId={product.id} />
-                        <p><strong>Material:</strong> {product.material}</p>
-                        <p><strong>Färg:</strong> {product.color}</p>
+
+                        <p>
+                            <strong>Material:</strong>{" "}
+                            {product.material}
+                        </p>
+
+                        <p>
+                            <strong>Färg:</strong>{" "}
+                            {product.color}
+                        </p>
+
                         {product.scent && (
-                            <p><strong>Doft:</strong> {product.scent}</p>
+                            <p>
+                                <strong>Doft:</strong>{" "}
+                                {product.scent}
+                            </p>
                         )}
                     </div>
                 </div>
