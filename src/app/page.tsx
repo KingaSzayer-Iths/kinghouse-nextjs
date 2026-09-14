@@ -30,13 +30,14 @@ export default async function Home() {
         <div className={styles.productGrid}>
 
           {/* För varje utvald produkt renderas ett ProductCard.
-    Den första bilden prioriteras eftersom den ligger tidigt på sidan
-    och kan påverka sidans LCP-värde. */}
+              De första fyra bilderna ligger i första raden på desktop
+              och någon av dem kan därför bli sidans LCP. */}
           {featuredProducts.map((product, index) => (
             <ProductCard
               key={product.id}
               product={product}
-              priority={index === 0}
+              // Någon av dem första fyra bilderna kan bli sidans LCP, därför laddas de direkt.
+              priority={index < 4}
             />
           ))}
 

@@ -14,34 +14,45 @@ export default function FavoritesList() {
     // State-variabel som innehåller de fullständiga favoritprodukterna, hela produktobjekten för produkt 1 och 5
     const [favoriteProducts, setFavoriteProducts] = useState<Product[]>([]);
 
-    // Hämtar sparade favorit-id:n från localStorage
+    // Läser sparade favoriter från localStorage och hämtar sedan
+    // motsvarande produkter från mock-API:t när sidan laddas.
     useEffect(() => {
         const storedFavorites = localStorage.getItem("favorites");
-        // Om det finns sparade favoriter, gör om JSON-texten till en array och spara i state
-        if (storedFavorites) {
-            const favorites: string[] = JSON.parse(storedFavorites);
-            setFavoriteIds(favorites);
-        }
-        // Om det inte finns några sparade favoriter, sätt favoriteIds till en tom array
-    }, []);
 
-    // Hämtar alla produkter från mock-API
-    useEffect(() => {
+        // Gör om de sparade favorit-id:na från JSON-text till en array.
+        // Om inga favoriter finns används en tom array.
+        const favorites: string[] = storedFavorites
+            ? JSON.parse(storedFavorites)
+            : [];
+
+        // Sparar favorit-id:na i state så att de kan användas
+        // när en produkt senare tas bort från favoriter.
+        setFavoriteIds(favorites);
+
+        // Om användaren inte har några favoriter behöver vi inte
+        // göra någon onödig hämtning från API:t.
+        if (favorites.length === 0) {
+            setFavoriteProducts([]);
+            return;
+        }
+
         async function fetchProducts() {
             const response = await fetch("http://localhost:3001/products");
             const products: Product[] = await response.json();
 
-            // Filtrerar fram de produkter vars id finns bland sparade favoriter
-            const favorites = products.filter((product) =>
-                favoriteIds.includes(product.id)
+            // Filtrerar fram endast de produkter vars id finns
+            // bland användarens sparade favoriter.
+            const matchingFavorites = products.filter((product) =>
+                favorites.includes(product.id)
             );
-            // Sparar de fullständiga favoritprodukterna i state
-            setFavoriteProducts(favorites);
+
+            // Sparar de fullständiga favoritprodukterna i state.
+            setFavoriteProducts(matchingFavorites);
         }
-        // Anropar funktionen för att hämta produkter när favoriteIds ändras
+
         fetchProducts();
-        // Om favoriteIds ändras, körs useEffect igen och hämtar uppdaterade favoritprodukter
-    }, [favoriteIds]);
+    }, []);
+
 
     // Tar bort en produkt från favoriter
     function removeFavorite(productId: string) {
@@ -53,9 +64,18 @@ export default function FavoritesList() {
             "favorites",
             JSON.stringify(updatedFavoriteIds)
         );
+
         // Uppdaterar state med den nya listan av favorit-id:n
         setFavoriteIds(updatedFavoriteIds);
+
+        // Uppdaterar även listan med favoritprodukter direkt.
+        // Då behöver sidan inte hämta alla produkter igen bara för att en favorit tas bort.
+        //.filter(...) skapar en ny array där produkten med rätt productId är borttagen.
+        setFavoriteProducts((currentProducts) =>
+            currentProducts.filter((product) => product.id !== productId)
+        );
     }
+
 
     // Om arrayen är tom, true - istället för en tom produktgrid så visar ett meddelande inga sparade favoriter
     if (favoriteProducts.length === 0) {
@@ -74,11 +94,18 @@ export default function FavoritesList() {
 
     return (
         <div className={styles.favoritesGrid}>
-            {favoriteProducts.map((product) => (
+            {favoriteProducts.map((product, index) => (
                 <div key={product.id} className={styles.favoriteItem}>
-                    <ProductCard product={product} />
+                    <ProductCard
+                        product={product}
 
-                    <button className={styles.removeButton}
+                        // Prioriterar bara den första favoritbilden.
+                        // Den ligger högst i produktlistan och kan påverka sidans LCP.
+                        priority={index === 0}
+                    />
+
+                    <button
+                        className={styles.removeButton}
                         type="button"
                         onClick={() => removeFavorite(product.id)}
                     >

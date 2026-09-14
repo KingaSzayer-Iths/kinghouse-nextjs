@@ -45,12 +45,16 @@ export default function AboutPage() {
         </div>
 
         <div className={styles.storyImageWrapper}>
-          <Image
-            className={styles.storyImage}
+          <Image className={styles.storyImage}
             src="/images/products/about-kinghouse-design2.webp"
             alt="Doftljus från KingHouse Design i en varm skandinavisk hemmiljö"
             width={800}
             height={800}
+            // Hjälper Next.js att välja en lagom stor bildfil utifrån layouten.
+            // På mobil visas bilden över hela bredden,
+            // medan den på större skärmar upptar ungefär halva layouten.
+            sizes="(max-width: 47.99rem) 100vw, 50vw"
+            loading="eager"
           />
         </div>
       </section>
@@ -110,12 +114,15 @@ export default function AboutPage() {
       {/* Beskriver KingHouse Designs visuella filosofi */}
       <section className={styles.designSection}>
         <div className={styles.designImageWrapper}>
-          <Image
-            className={styles.designImage}
+          <Image className={styles.designImage}
             src="/images/products/about-scandinavian-design.webp"
             alt="Skandinavisk ljusstake och doftljus från KingHouse Design i en varm, minimalistisk miljö"
             width={800}
             height={800}
+            // Hjälper Next.js att välja en lagom stor bildfil.
+            // På mindre skärmar visas bilden över hela bredden,
+            // medan den på större skärmar upptar ungefär halva layouten.
+            sizes="(max-width: 63.99rem) 100vw, 50vw"
           />
         </div>
 

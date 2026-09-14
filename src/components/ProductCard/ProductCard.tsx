@@ -32,9 +32,9 @@ export default function ProductCard({ product, priority = false }: ProductCardPr
                         // Hjälper Next.js att välja en lagom stor bild beroende på skärmstorlek
                         // och hur många kolumner produktgridden visar.
                         sizes="(max-width: 47.99rem) 100vw, (max-width: 63.99rem) 50vw, 25vw"
-                        // Prioriterar bara bilden när ProductCard får priority=true.
-                        // Övriga produktbilder kan fortsätta laddas först när de behövs.
-                        priority={priority}
+                        // Den första synliga produktbilden laddas direkt eftersom den kan bli sidans LCP.
+                        // Övriga bilder använder Next.js vanliga lazy loading.
+                        loading={priority ? "eager" : undefined}
                     />
                 </div>
 
