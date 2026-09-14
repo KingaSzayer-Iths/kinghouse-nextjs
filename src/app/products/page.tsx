@@ -3,7 +3,7 @@ import styles from "./page.module.css";
 import ProductList from "@/components/ProductList/ProductList";
 
 export default async function ProductsPage() {
-  // Hämtar alla produkter från mock-API
+  // Hämtar alla produkter från den lokala produktdatan src/data/products.json
   const products = await getProducts();
   return (
     <main id="main-content" className={styles.productsPage}>

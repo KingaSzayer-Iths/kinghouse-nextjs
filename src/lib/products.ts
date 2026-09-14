@@ -1,10 +1,15 @@
 import type { Product } from "@/types/Product";
+import productsData from "@/data/products.json";
 
-// Hämtar alla produkter från mock-API
+// Hämtar alla produkter från den lokala JSON-filen
 export async function getProducts(): Promise<Product[]> {
-  const response = await fetch("http://localhost:3001/products");
-
-  const products: Product[] = await response.json();
-
-  return products;
+    return productsData.products as Product[];
 }
+
+
+
+
+
+
+
+
