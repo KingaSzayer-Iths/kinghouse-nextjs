@@ -54,11 +54,11 @@ export default function AddToCartButton({
     }
 
     return (
-<button className={styles.addToCartButton}
-    type="button"    
-    onClick={handleAddToCart}
->
-    {isAdded ? "Tillagd i kundkorgen ✓" : "Lägg i kundkorg"}
-</button>
+        <button className={styles.addToCartButton}
+            type="button"
+            onClick={handleAddToCart}
+        >
+            {isAdded ? "Tillagd i kundkorgen ✓" : "Lägg i kundkorg"}
+        </button>
     );
 }

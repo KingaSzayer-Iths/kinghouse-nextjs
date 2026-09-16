@@ -42,7 +42,7 @@ export default function FavoriteIconButton({
       const updatedFavorites = favorites.filter(
         (id) => id !== productId
       );
-     // Uppdaterar localStorage med den nya listan av favoriter
+      // Uppdaterar localStorage med den nya listan av favoriter
       localStorage.setItem(
         "favorites",
         JSON.stringify(updatedFavorites)
