@@ -18,7 +18,8 @@
 /* Stor 404-text */
 .errorCode {
     margin-block-end: var(--space-sm);
-    color: var(--color-beige);
+    /* color: var(--color-taupe); */
+    color: var(--color-primary);
     font-size: clamp(5rem, 16vw, 10rem);
     font-weight: 700;
     line-height: 0.9;

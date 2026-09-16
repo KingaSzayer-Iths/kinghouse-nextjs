@@ -62,7 +62,7 @@ export default function FavoriteButton({
         <button
             type="button"
             // Dynamiskt lägger till en CSS-klass om produkten är en favorit
-            className={`${styles.favoriteButton} ${isFavorite ? styles.favoriteButtonActive : "" }`}
+            className={`${styles.favoriteButton} ${isFavorite ? styles.favoriteButtonActive : ""}`}
             onClick={toggleFavorite}
         >
             {isFavorite ? "Sparad som favorit" : "Spara som favorit"}
